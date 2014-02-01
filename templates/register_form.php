@@ -1,7 +1,16 @@
 <form action="register.php" method="post">
     <fieldset>
         <div class="control-group">
-            <input autofocus name="username" placeholder="Username" type="text"/>
+            <input autofocus name="call" placeholder="Call sign" type="text"/>
+        </div>
+        <div class="control-group">
+            <input autofocus name="name" placeholder="Name" type="text"/>
+        </div>
+        <div class="control-group">
+            <input autofocus name="email" placeholder="Email" type="text"/>
+        </div>
+        <div class="control-group">
+            <input autofocus name="phone" placeholder="Phone" type="text"/>
         </div>
         <div class="control-group">
             <input name="password" placeholder="Password" type="password"/>
