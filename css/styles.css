@@ -1,0 +1,84 @@
+/****************************************************************************
+ * styles.css
+ *
+ * Computer Science 50
+ * Problem Set 7
+ *
+ * Global CSS.
+ ***************************************************************************/
+
+.container
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#top
+{
+    /* center contents */
+    text-align: center;
+}
+
+#middle
+{
+    /* center contents */
+    text-align: center;
+}
+
+#bottom
+{
+    /* shrink bottom's font size */
+    font-size: smaller;
+
+    /* surround with whitespace */
+    margin: 20px;
+
+    /* center contents */
+    text-align: center;
+}
+
+.table table 
+{
+   border-spacing: 0;
+   margin:auto;
+   border-collapse:collapse;
+   font-size: 12px;
+}
+
+.table th, .table td
+{
+    padding: 2px;
+    border: solid thin black;
+    vertical-align: middle;
+}
+
+.table th:nth-child(odd), .table td:nth-child(odd)
+{
+    background-color: #fcba7a;
+}
+
+/*.table th
+{
+    font-weight:normal;
+}*/
+
+#nav td
+{
+    padding: 0px, 50px;
+    vertical-align: middle;
+    border: none;
+    background-color : #fcba7a;
+}
+
+#nav a
+{
+    text-decoration: none;
+    color: black;
+}
+
+#nav a.link #nav a.visited
+{
+    font-style: none;
+    color: black;
+}
