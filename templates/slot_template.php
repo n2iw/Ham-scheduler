@@ -23,8 +23,8 @@
 
         <?php foreach ($lines as $l): ?>
             <tr>
-                <th><?= $l["date"] ?></td>
-                <th><?php printf("%04d",$l["time"]); ?></td>
+                <th><?= $l["date"] ?></th>
+                <th><?php printf("%04d",$l["time"]); ?></th>
 
             <?php foreach ($l["slots"] as $s): ?>
                     <td><?= $s["op"]?></td>
