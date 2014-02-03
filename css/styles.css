@@ -64,17 +64,19 @@
 }
 
 
-/*.table th
+#profile_table td
 {
-    font-weight:normal;
-}*/
+    font-size:15px;
+    padding: 10px;
+}
 
 #nav td
 {
-    padding: 0px, 50px;
+    padding: 10px;
     vertical-align: middle;
     border: none;
     background-color : #fcba7a;
+    font-size: 18px;
 }
 
 #nav a
