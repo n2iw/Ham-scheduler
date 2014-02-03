@@ -53,10 +53,16 @@
     vertical-align: middle;
 }
 
-.table th:nth-child(odd), .table td:nth-child(odd)
+/*.table th:nth-child(odd), .table td:nth-child(odd), .table tr:nth-child(odd)
 {
     background-color: #fcba7a;
 }
+*/
+.table tr:nth-child(odd)
+{
+    background-color: #fcba7a;
+}
+
 
 /*.table th
 {
@@ -81,4 +87,9 @@
 {
     font-style: none;
     color: black;
+}
+
+.control-group
+{
+    margin: 7px;
 }
