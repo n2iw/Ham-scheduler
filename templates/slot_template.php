@@ -1,8 +1,6 @@
 <div class="table">
+<h1>2014 RDXA W1AW/2 Schedule</h1>
 <table id="slots_table">
-    <caption>
-        <h1>RDXA W1AW/2 Schedule</h1>
-    </caption>
     <?php $op_id = $_SESSION["id"]; ?>
         <tr>
             <th>UTC Date</th>
