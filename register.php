@@ -30,7 +30,7 @@
             apologize("passwords don't match!");
         }
         if (query("INSERT INTO op (`call`, `password`, `name`, `email`, `phone`) 
-            VALUES(?,?,?,?,?)", $_POST["call"], crypt($_POST["password"]), 
+            VALUES(?,?,?,?,?)", strtoupper($_POST["call"]), crypt($_POST["password"]), 
             $_POST["name"], $_POST["email"], $_POST["phone"]) === false)
         {
             apologize("Sorry, register failed {$_POST["call"]} might exists!");

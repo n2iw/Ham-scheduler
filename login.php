@@ -17,7 +17,7 @@
         }
 
         // query database for user
-        $rows = query("SELECT * FROM op WHERE `call` = ?", $_POST["call"]);
+        $rows = query("SELECT * FROM op WHERE `call` = ?", strtoupper($_POST["call"]));
 
         // if we found user, check password
         if (count($rows) == 1)
