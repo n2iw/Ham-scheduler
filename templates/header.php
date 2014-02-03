@@ -25,6 +25,7 @@
                         <tr>
                             <td><a href="index.php">Home</a></td>
                             <td><a href="register.php">Register</a></td>
+                            <td><a href="profile.php">Profile</a></td>
                             <td><a href="logout.php">Logout</a></td>
                         </tr>
                     </table>
