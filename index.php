@@ -30,8 +30,7 @@
         $result = query("SELECT DISTINCT date,startTime FROM `slot`");
         foreach ($result as $r)
         {
-            $result2 = query("SELECT band.id as band_id, band.band, 
-                mode.id as mode_id, mode.mode, op.call as op, op.id as op_id
+            $result2 = query("SELECT slot.id as id, op.call as op, op.id as op_id
                 FROM slot, band, mode, op
                 WHERE slot.band=band.id and slot.mode=mode.id and slot.op=op.id
                 and slot.date=? and slot.startTime=?
@@ -40,10 +39,7 @@
             foreach ($result2 as $r2)
             {
                 $slots[] = [
-                    "band_id"=>$r2["band_id"], 
-                    "band"=>$r2["band"],
-                    "mode_id"=>$r2["mode_id"],
-                    "mode"=>$r2["mode"],
+                    "id"=>$r2["id"],
                     "op_id"=>$r2["op_id"],
                     "op"=>$r2["op"]
                 ];
