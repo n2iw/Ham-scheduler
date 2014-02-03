@@ -29,7 +29,16 @@
 
             <?php //Actual data slots
                 foreach ($l["slots"] as $s): ?>
-                    <td><?= $s["op"]?>
+                    <?php if ($s["op_id"] == 0)
+                              $bgc = "";
+                          else if ($s["op_id"] == $op_id)
+                              $bgc = "style=\"background-color:red; color:white\"";
+                          else 
+                              $bgc = "style=\"background-color:grey; color:white\"";
+
+                    ?>
+                    <td <?= $bgc?>">
+                        <?= $s["op"]?>
                         <?php if ($s["op_id"] == 0): ?>
                             <form action="take.php" method="POST">
                                 <input type="hidden" name="id" value="<?= $s["id"]?>">
