@@ -60,7 +60,7 @@
         }
         else
         {
-            redirect("/");
+            redirect("/rdxa");
         }
     }
     else

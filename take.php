@@ -12,7 +12,7 @@
 
     }else
     {
-        redirect("/");
+        redirect("/rdxa");
     }
 
 
