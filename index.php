@@ -8,6 +8,10 @@
     }
     else
     {
+        $op_id = $_SESSION["id"];
+        $result = query("SELECT * FROM op WHERE id=?", $op_id);
+        if ($result !== false)
+            $name = $result[0]["call"];
         //get all the bands and modes for table header
         $result = query("SELECT * FROM band ORDER BY id");
         foreach ($result as $r)
@@ -51,6 +55,6 @@
                 "slots"=>$slots
             ];
         }
-        render("slot_template.php", ["title"=>"Time Slots", "bands" => $bands, "lines"=>$lines ]);
+        render("slot_template.php", ["title"=>"Time Slots - $name", "bands" => $bands, "lines"=>$lines ]);
     }
 ?>
