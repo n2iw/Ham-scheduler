@@ -30,14 +30,14 @@
             <?php //Actual data slots
                 foreach ($l["slots"] as $s): ?>
                     <?php if ($s["op_id"] == 0)
-                              $bgc = "";
+                              $className = "";
                           else if ($s["op_id"] == $op_id)
-                              $bgc = "style=\"background-color:red; color:white\"";
+                              $className = "my_slot";
                           else 
-                              $bgc = "style=\"background-color:grey; color:white\"";
+                              $className = "others_slot";
 
                     ?>
-                    <td <?= $bgc?>">
+                    <td class="<?= $className?>">
                         <?= $s["op"]?>
                         <?php if ($s["op_id"] == 0): ?>
                             <form action="take.php" method="POST">

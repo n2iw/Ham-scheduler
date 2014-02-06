@@ -95,3 +95,16 @@
 {
     margin: 7px;
 }
+
+.my_slot
+{
+    background-color: red;
+    color: white;
+}
+
+.others_slot
+{
+    background-color: grey;
+    color: white;
+}
+
