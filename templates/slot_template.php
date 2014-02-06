@@ -1,7 +1,14 @@
 <div class="table">
 <h1>2014 RDXA W1AW/2 Schedule</h1>
 <table id="slots_table">
-    <?php $op_id = $_SESSION["id"]; ?>
+    <?php 
+        $op_id = $_SESSION["id"];
+        $result = query("SELECT * FROM op WHERE id=?", $op_id);
+        if ($result !== false)
+            $privilege = $result[0]["privilege"];
+        else
+            $privilege = 0;
+    ?>
         <tr>
             <th>UTC Date</th>
             <th>UTC Time</th>
@@ -39,13 +46,13 @@
                     ?>
                     <td class="<?= $className?>">
                         <?= $s["op"]?>
-                        <?php if ($s["op_id"] == 0): ?>
+                        <?php if ($s["op_id"] == 0 && $privilege > 0): ?>
                             <form action="take.php" method="POST">
                                 <input type="hidden" name="id" value="<?= $s["id"]?>">
                                 <input type="hidden" name="op" value="<?= $op_id?>">
                                 <input type="submit" value="Take">
                             </form> 
-                        <?php elseif ($s["op_id"] == $op_id): ?>
+                        <?php elseif ($s["op_id"] == $op_id || $privilege > 1): ?>
                             <form action="take.php" method="POST">
                                 <input type="hidden" name="id" value="<?= $s["id"]?>">
                                 <input type="hidden" name="op" value="0">
