@@ -6,6 +6,11 @@
     // if form was submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
+        foreach ( $_POST as &$p){
+            $p = htmlspecialchars(trim($p));
+        }
+        $_POST["call"] = strtoupper($_POST["call"]);
+        
         // validate submission
         if (empty($_POST["call"]))
         {
@@ -17,7 +22,7 @@
         }
 
         // query database for user
-        $rows = query("SELECT * FROM op WHERE `call` = ?", strtoupper($_POST["call"]));
+        $rows = query("SELECT * FROM op WHERE `call` = ?", $_POST["call"]);
 
         // if we found user, check password
         if (count($rows) == 1)

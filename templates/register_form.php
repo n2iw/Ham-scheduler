@@ -13,6 +13,9 @@
             <input name="phone" placeholder="Phone" type="text"/>
         </div>
         <div class="control-group">
+            <input name="club" placeholder="Club" type="text"/>
+        </div>
+        <div class="control-group">
             <input name="password" placeholder="Password" type="password"/>
         </div>
         <div class="control-group">

@@ -13,6 +13,10 @@
             apologize("New passwords don't match!");
         }
 
+        foreach ( $_POST as &$p){
+            $p = htmlspecialchars(trim($p));
+        }
+
         $edit = "";
         if (!empty($_POST["call"])) 
         {
@@ -29,6 +33,10 @@
         if (!empty($_POST["phone"]))
         {
             $edit .= "`phone`=\"" . $_POST["phone"] ."\", ";
+        }
+        if (!empty($_POST["club"]))
+        {
+            $edit .= "`club`=\"" . $_POST["club"] ."\", ";
         }
         if (!empty($_POST["new_password"]))
         {
