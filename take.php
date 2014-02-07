@@ -3,11 +3,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {    
         $op_id = $_SESSION["id"];
-        $result = query("SELECT * FROM op WHERE id=?", $op_id);
-        if ($result !== false)
-            $privilege = $result[0]["privilege"];
-        else
-            $privilege = 0;
+        $privilege = $_SESSION["privilege"];
         //dump($_POST);
         if ($privilege > 1){ //if you are admin op you can cancel other's slot
             $result = query("UPDATE slot SET op=? WHERE id=? AND (op=0 OR ?=0)", 

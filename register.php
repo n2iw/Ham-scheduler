@@ -43,9 +43,10 @@
         }
         else
         {
-            $rows = query("SELECT LAST_INSERT_ID() AS id"); 
-            $id = $rows[0]["id"];
-            $_SESSION["id"] = $id;
+            $rows = query("SELECT * FROM op WHERE `call` = ?", $_POST["call"]);
+            $_SESSION["id"] = $rows[0]["id"];
+            $_SESSION["call"] = $rows[0]["call"];
+            $_SESSION["privilege"] = $rows[0]["privilege"];
             redirect("/rdxa");
         }
     }

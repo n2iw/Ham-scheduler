@@ -3,11 +3,7 @@
 <table id="slots_table">
     <?php 
         $op_id = $_SESSION["id"];
-        $result = query("SELECT * FROM op WHERE id=?", $op_id);
-        if ($result !== false)
-            $privilege = $result[0]["privilege"];
-        else
-            $privilege = 0;
+        $privilege = $_SESSION["privilege"];
     ?>
         <tr>
             <th>UTC Date</th>

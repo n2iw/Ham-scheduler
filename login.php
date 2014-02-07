@@ -35,6 +35,8 @@
             {
                 // remember that user's now logged in by storing user's ID in session
                 $_SESSION["id"] = $row["id"];
+                $_SESSION["call"] = $row["call"];
+                $_SESSION["privilege"] = $row["privilege"];
 
                 // redirect to home
                 redirect("/rdxa");
