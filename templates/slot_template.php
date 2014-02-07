@@ -50,7 +50,7 @@
                             <form action="take.php" method="POST">
                                 <input type="hidden" name="id" value="<?= $s["id"]?>">
                                 <input type="hidden" name="op" value="<?= $op_id?>">
-                                <input type="submit" value="Take">
+                                <input type="submit" value="Reserve">
                             </form> 
                         <?php elseif ($s["op_id"] == $op_id || $privilege > 1): ?>
                             <form action="take.php" method="POST">
