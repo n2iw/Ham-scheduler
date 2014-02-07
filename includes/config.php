@@ -14,6 +14,7 @@
     // requirements
     require("constants.php");
     require("functions.php");
+    date_default_timezone_set('UTC');
 
     // enable sessions
     session_start();

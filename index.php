@@ -1,54 +1,59 @@
 <?php
     // configuration
     require("includes/config.php");
-    // if form was submitted
-    if ($_SERVER["REQUEST_METHOD"] == "POST")
-    {
-        // TODO 
-    }
-    else
+    if (isset($_GET["date"]))
     {
         $op_id = $_SESSION["id"];
         $call = $_SESSION["call"];
-        //get all the bands and modes for table header
-        $result = query("SELECT * FROM band ORDER BY id");
-        foreach ($result as $r)
-        {
-            $result2 = query("SELECT mode.mode as mode FROM band_mode,mode
-                WHERE band_mode.mode=mode.id AND band_mode.band=? ORDER BY mode.id", $r["id"]);
-            $modes = [];
-            foreach ($result2 as $r2)
-            {
-                $modes[] = $r2["mode"];
-            }
-            $bands[] = ["id"=>$r["id"], "name"=>$r["band"], "modes"=>$modes];
-        }
-
-        //get dates and times
-        $result = query("SELECT DISTINCT date,startTime FROM `slot`");
-        foreach ($result as $r)
-        {
-            $result2 = query("SELECT slot.id as id, op.call as op, op.id as op_id
-                FROM slot, band, mode, op
-                WHERE slot.band=band.id and slot.mode=mode.id and slot.op=op.id
-                and slot.date=? and slot.startTime=?
-                ORDER BY band.id,mode.id", $r["date"], $r["startTime"]);
+        $date = $_GET["date"];
+        //dump($date);
+        
+        //get all the bands and modes 
+        $result = query("SELECT band.band as band, band.id as band_id,
+            mode.mode as mode, mode.id as mode_id 
+            FROM band_mode,band,mode 
+            WHERE band_mode.band=band.id AND band_mode.mode=mode.id
+            ORDER BY band_id, mode_id");
+        foreach ($result as $r) { //each iteration is one band mode
+            $result2 = query("SELECT slot.id as id, op.call as op, op.id as op_id,
+                startTime
+                FROM slot, op
+                WHERE slot.date=? AND slot.band=? AND slot.mode=? AND slot.op=op.id
+                ORDER BY startTime", $date, $r["band_id"], $r["mode_id"]);
             $slots = [];
-            foreach ($result2 as $r2)
-            {
+            foreach ($result2 as $r2) {
                 $slots[] = [
                     "id"=>$r2["id"],
+                    "time"=>$r2["startTime"], //Maybe not necessory
                     "op_id"=>$r2["op_id"],
                     "op"=>$r2["op"]
                 ];
             }
             
             $lines[] = [
-                "date"=>$r["date"],
-                "time"=>$r["startTime"],
+                "band"=>$r["band"],
+                "mode"=>$r["mode"],
                 "slots"=>$slots
             ];
         }
-        render("slot_template.php", ["title"=>"Time Slots - $call", "bands" => $bands, "lines"=>$lines ]);
+
+        $result = query("SELECT DISTINCT startTime FROM `slot` ORDER BY startTime");
+        foreach ($result as $r){
+            $times[] = $r["startTime"];
+        }
+
+        $result = query("SELECT DISTINCT date FROM `slot` ORDER BY date");
+        foreach ($result as $r){
+            $dates[] = $r["date"];
+        }
+        //dump($lines);
+
+
+        render("slot_template.php", ["title"=>"Time Slots - $call", "date" => $date,
+            "times" => $times, "dates" => $dates, "lines"=>$lines ]);
+    }
+    else
+    {
+        redirect("index.php?date=2014-05-21");
     }
 ?>

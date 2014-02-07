@@ -1,34 +1,41 @@
 <div class="table">
 <h1>2014 RDXA W1AW/2 Schedule</h1>
+
+<div id="date_nav">
+<table>
+    <tr>
+      <?php foreach ($dates as $d): ?>
+          <th><a href="index.php?date=<?= $d ?>"><?= $d ?></th>
+      <?php endforeach ?>
+    </tr>
+</table>
+</div>
+
 <table id="slots_table">
     <?php 
         $op_id = $_SESSION["id"];
         $privilege = $_SESSION["privilege"];
     ?>
         <tr>
-            <th>UTC Date</th>
-            <th>UTC Time</th>
-        <?php //Table Header line1
-            foreach ($bands as $b): ?>
-            <th colspan="<?= count($b["modes"])?>"><?= $b["name"] ?></th>
-        <?php endforeach?>
-        </tr>
-        <?php //Table Header line1 ?>
-        <tr>
-            <th>Date</th>
-            <th>Time</th>
-        <?php foreach ($bands as $b): ?>
-            <?php foreach ($b["modes"] as $m): ?>
-                <th><?= $m ?></th>
-            <?php endforeach ?>
+            <?php
+                $real_date = mktime(0,0,0,substr($date,5,2),substr($date,8,2),
+                                        substr($date,0,4));
+                $dofw = date("l", $real_date);
+                $day = date("F j", $real_date);
+            ?>
+            <th><?= $dofw ?></th>
+            <th><?= $day ?></th>
+        <?php //Table Header line
+            foreach ($times as $t): ?>
+            <th><?php printf("%04d-%04d",$t,$t + 200); ?></th>
         <?php endforeach?>
         </tr>
 
         <?php //Data lines
             foreach ($lines as $l): ?>
             <tr>
-                <th><?= $l["date"] ?></th>
-                <th><?php printf("%04d",$l["time"]); ?></th>
+                <th><?= $l["band"] ?></th>
+                <th><?= $l["mode"] ?></th>
 
             <?php //Actual data slots
                 foreach ($l["slots"] as $s): ?>
@@ -43,13 +50,15 @@
                     <td class="<?= $className?>">
                         <?= $s["op"]?>
                         <?php if ($s["op_id"] == 0 && $privilege > 0): ?>
-                            <form action="take.php" method="POST">
+                            <form action="reserve.php" method="POST">
+                                <input type="hidden" name="date" value="<?= $date?>">
                                 <input type="hidden" name="id" value="<?= $s["id"]?>">
                                 <input type="hidden" name="op" value="<?= $op_id?>">
                                 <input type="submit" value="Reserve">
                             </form> 
                         <?php elseif ($s["op_id"] == $op_id || $privilege > 1): ?>
-                            <form action="take.php" method="POST">
+                            <form action="reserve.php" method="POST">
+                                <input type="hidden" name="date" value="<?= $date?>">
                                 <input type="hidden" name="id" value="<?= $s["id"]?>">
                                 <input type="hidden" name="op" value="0">
                                 <input type="submit" value="Cancel">

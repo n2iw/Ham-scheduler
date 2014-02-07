@@ -70,7 +70,7 @@
     padding: 10px;
 }
 
-#nav td
+#nav td, #date_nav th
 {
     padding: 10px;
     vertical-align: middle;
@@ -79,13 +79,13 @@
     font-size: 18px;
 }
 
-#nav a
+#nav a, #date_nav a
 {
     text-decoration: none;
     color: black;
 }
 
-#nav a.link #nav a.visited
+#nav a.link #nav a.visited, #date_nav a.link #date_nav a.visited
 {
     font-style: none;
     color: black;
@@ -108,3 +108,19 @@
     color: white;
 }
 
+#date_nav
+{
+    margin: 20px;
+}
+
+#date_nav th
+{
+    font-size: 12px;
+}
+
+#date_nav table, #nav table
+{
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 5px;
+}
