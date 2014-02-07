@@ -27,7 +27,7 @@
             <th><?= $day ?></th>
         <?php //Table Header line
             foreach ($times as $t): ?>
-            <th><?php printf("%04d-%04d",$t,$t + 200); ?></th>
+            <th><?php printf("%04d-%04d",$t,$t + 159); ?></th>
         <?php endforeach?>
         </tr>
 
