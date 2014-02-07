@@ -9,9 +9,7 @@
     else
     {
         $op_id = $_SESSION["id"];
-        $result = query("SELECT * FROM op WHERE id=?", $op_id);
-        if ($result !== false)
-            $call = $result[0]["call"];
+        $call = $_SESSION["call"];
         //get all the bands and modes for table header
         $result = query("SELECT * FROM band ORDER BY id");
         foreach ($result as $r)
