@@ -53,16 +53,15 @@
     vertical-align: middle;
 }
 
-/*.table th:nth-child(odd), .table td:nth-child(odd), .table tr:nth-child(odd)
+/*.table tr:nth-child(odd)
 {
-    background-color: #fcba7a;
-}
-*/
-.table tr:nth-child(odd)
+    background-color: #b8cce4;
+}*/
+
+.table td, th
 {
     background-color: #b8cce4;
 }
-
 
 #profile_table td
 {
@@ -96,13 +95,13 @@
     margin: 7px;
 }
 
-.my_slot
+td.my_slot
 {
     background-color: #365f91;
     color: white;
 }
 
-.others_slot
+td.others_slot
 {
     background-color: grey;
     color: white;
