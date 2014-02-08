@@ -60,7 +60,7 @@
 */
 .table tr:nth-child(odd)
 {
-    background-color: #fcba7a;
+    background-color: #b8cce4;
 }
 
 
@@ -74,8 +74,8 @@
 {
     padding: 10px;
     vertical-align: middle;
-    border: none;
-    background-color : #fcba7a;
+    border: black thin solid;
+    background-color : #ffe599;
     font-size: 18px;
 }
 
@@ -98,7 +98,7 @@
 
 .my_slot
 {
-    background-color: red;
+    background-color: #365f91;
     color: white;
 }
 
@@ -124,3 +124,20 @@
     border-collapse: separate;
     border-spacing: 5px;
 }
+
+th.time 
+{ 
+    white-space:pre;
+}
+
+th.band
+{
+    background-color: #365f91;
+    color: white;
+}
+
+#date_nav th.not_today
+{
+    background-color: white;
+}
+

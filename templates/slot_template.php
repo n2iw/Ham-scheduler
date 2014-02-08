@@ -5,9 +5,16 @@
 <table>
     <tr>
       <?php foreach ($dates as $d): ?>
-          <th><a href="index.php?date=<?= $d ?>"><?= $d ?></th>
+          <th class="<?= $d==$date? "" : "not_today"?>">
+            <a href="index.php?date=<?= $d ?>">
+            <?php
+                 $utc_date = DateTime::createFromFormat(
+                             "Y-m-d", $d, new DateTimeZone('UTC'));
+                 echo $utc_date->format("D n/j");
+            ?>
+          </th>
       <?php endforeach ?>
-    </tr>
+</tr>
 </table>
 </div>
 
@@ -18,24 +25,50 @@
     ?>
         <tr>
             <?php
-                $real_date = mktime(0,0,0,substr($date,5,2),substr($date,8,2),
-                                        substr($date,0,4));
-                $dofw = date("l", $real_date);
-                $day = date("F j", $real_date);
+                $utc_date = DateTime::createFromFormat(
+                            "Y-m-d Gi", $date . "0000", new DateTimeZone('UTC'));
+                $utc_day = $utc_date->format("D n/j");
             ?>
-            <th><?= $dofw ?></th>
-            <th><?= $day ?></th>
-        <?php //Table Header line
+            <th class="time"><?= "UTC\nTime"?></th>
+            <th><?= $utc_day ?></th>
+        <?php //Table Header line UTC time
             foreach ($times as $t): ?>
-            <th><?php printf("%04d-%04d",$t,$t + 159); ?></th>
+            <th><?php printf("%04d-%04d",$t,$t + 200); ?></th>
+        <?php endforeach?>
+        </tr>
+        
+        <tr>
+            <th class="time"><?= "Local\nTime" ?></th>
+            <?php
+                $ny_date = $utc_date;
+                $ny_date->setTimeZone(new DateTimeZone('America/New_York'));
+                $ny_day = $ny_date->format('D n/j');
+            ?>
+            <th><?= $ny_day ?></th>
+        <?php //Table Header line local time
+            foreach ($times as $t): ?>
+                <?php
+                    $utc_time = DateTime::createFromFormat(
+                                "Y-m-d Gi", $date . sprintf("%04d",$t), new DateTimeZone('UTC'));
+                    $ny_time = $utc_time;
+                    $ny_time->setTimeZone(new DateTimeZone('America/New_York'));
+                    $ny_time_str = $ny_time->format("D n/j -\ng a");
+
+                    $utc_time = DateTime::createFromFormat(
+                                "Y-m-d Gi", $date . sprintf("%04d",$t+200), new DateTimeZone('UTC'));
+                    $ny_time = $utc_time;
+                    $ny_time->setTimeZone(new DateTimeZone('America/New_York'));
+                    $ny_time_str .= $ny_time->format(' - g a');
+                ?>
+            <th class="time"><?= $ny_time_str  ?></th>
         <?php endforeach?>
         </tr>
 
         <?php //Data lines
             foreach ($lines as $l): ?>
             <tr>
-                <th><?= $l["band"] ?></th>
-                <th><?= $l["mode"] ?></th>
+                <th class="band"><?= $l["band"] ?></th>
+                <th class="band"><?= $l["mode"] ?></th>
 
             <?php //Actual data slots
                 foreach ($l["slots"] as $s): ?>
