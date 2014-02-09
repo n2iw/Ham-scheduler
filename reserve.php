@@ -15,11 +15,11 @@
         if ($result === false)
             apologize("Failed to take/cancel slot! Please try again later.");
         else
-            redirect("/rdxa/index.php?date=" . $_POST["date"]);
+            redirect("index.php?date=" . $_POST["date"]);
 
     }else
     {
-        redirect("/rdxa");
+        redirect("index.php");
     }
 
 

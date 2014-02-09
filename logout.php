@@ -7,6 +7,6 @@
     logout();
 
     // redirect user
-    redirect("/rdxa");
+    redirect("index.php");
 
 ?>

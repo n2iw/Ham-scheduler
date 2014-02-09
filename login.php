@@ -39,7 +39,7 @@
                 $_SESSION["privilege"] = $row["privilege"];
 
                 // redirect to home
-                redirect("/rdxa");
+                redirect("index.php");
             }
         }
 

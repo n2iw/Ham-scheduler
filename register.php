@@ -46,7 +46,7 @@
             $_SESSION["id"] = $rows[0]["id"];
             $_SESSION["call"] = $rows[0]["call"];
             $_SESSION["privilege"] = $rows[0]["privilege"];
-            redirect("/rdxa");
+            redirect("index.php");
         }
     }
     else
