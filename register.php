@@ -4,7 +4,6 @@
     // if form was submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        // TODO 
         if (empty($_POST["call"]))
         {
             apologize("Sorry you have to have a callsign");
@@ -35,9 +34,9 @@
         }
         $_POST["call"] = strtoupper($_POST["call"]);
         //dump($_POST);
-        if (query("INSERT INTO op (`call`, `password`, `name`, `email`, `phone`, `club`) 
-            VALUES(?,?,?,?,?,?)", $_POST["call"], crypt($_POST["password"]), 
-            $_POST["name"], $_POST["email"], $_POST["phone"], $_POST["club"]) === false)
+        if (query("INSERT INTO op (`call`, `password`, `name`, `email`, `phone`) 
+            VALUES(?,?,?,?,?)", $_POST["call"], crypt($_POST["password"]), 
+            $_POST["name"], $_POST["email"], $_POST["phone"]) === false)
         {
             apologize("Sorry, register failed {$_POST["call"]} might exists!");
         }
