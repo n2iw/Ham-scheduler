@@ -44,7 +44,7 @@
         }
 
         // else apologize
-        apologize("Invalid callsign and/or password.");
+        apologize("Invalid call sign or password!");
     }
     else
     {
