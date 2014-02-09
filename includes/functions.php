@@ -21,6 +21,14 @@
     }
 
     /**
+     * Indicate user with message
+     */
+    function succeed($message)
+    {
+        render("succeed.php", ["message" => $message]);
+        exit;
+    }
+    /**
      * Facilitates debugging by dumping contents of variable
      * to browser.
      */
