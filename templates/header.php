@@ -24,6 +24,7 @@
                     <table>
                         <tr>
                             <td><a href="index.php">Home</a></td>
+                            <td><a href="profile.php">Profile</a></td>
                             <td><a href="logout.php">Logout</a></td>
                             <td><a href="management.php">Management</a></td>
                         </tr>
