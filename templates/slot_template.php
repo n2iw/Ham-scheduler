@@ -1,7 +1,7 @@
 <div class="table">
 <h1>2014 RDXA W1AW/2 Schedule</h1>
 
-<div id="date_nav">
+<div id="date_nav" class="navigator">
 <table>
     <tr>
       <?php foreach ($dates as $d): ?>

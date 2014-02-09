@@ -19,14 +19,13 @@
 
         <div class="container-fluid">
 
-            <div class="table" id="nav">
+            <div id="nav" class="navigator">
                 <p>
                     <table>
                         <tr>
                             <td><a href="index.php">Home</a></td>
-                            <td><a href="register.php">Register</a></td>
-                            <td><a href="profile.php">Profile</a></td>
                             <td><a href="logout.php">Logout</a></td>
+                            <td><a href="management.php">Management</a></td>
                         </tr>
                     </table>
                 </p>

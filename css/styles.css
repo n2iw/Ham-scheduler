@@ -69,7 +69,8 @@
     padding: 10px;
 }
 
-#nav td, #date_nav th
+/*#nav td, #date_nav th, #managment_nav td */
+.navigator td, .navigator th
 {
     padding: 10px;
     vertical-align: middle;
@@ -78,13 +79,15 @@
     font-size: 18px;
 }
 
-#nav a, #date_nav a
+/*#nav a, #date_nav a, #managment_nav a*/
+.navigator a
 {
     text-decoration: none;
     color: black;
 }
 
-#nav a.link #nav a.visited, #date_nav a.link #date_nav a.visited
+/*#nav a.link #nav a.visited, #date_nav a.link #date_nav a.visited*/
+.navigator a.link .navigator a.visited
 {
     font-style: none;
     color: black;
@@ -117,7 +120,8 @@ td.others_slot
     font-size: 12px;
 }
 
-#date_nav table, #nav table
+/*#date_nav table, #nav table*/
+.navigator table
 {
     margin: auto;
     border-collapse: separate;
