@@ -10,7 +10,7 @@
         <?php if (isset($title)): ?>
             <title><?= htmlspecialchars($title) ?></title>
         <?php else: ?>
-            <title>RDXA</title>
+            <title>Website designed by N2IW</title>
         <?php endif ?>
 
     </head>
@@ -24,9 +24,15 @@
                     <table>
                         <tr>
                             <td><a href="index.php">Home</a></td>
-                            <td><a href="profile.php">Profile</a></td>
-                            <td><a href="logout.php">Logout</a></td>
-                            <td><a href="management.php">Management</a></td>
+                            <?php if (!isset($_SESSION["id"])): ?>
+                                <td><a href="login.php">Login</a></td>
+                            <?php else :?>
+                                <td><a href="profile.php">Profile</a></td>
+                                <td><a href="logout.php">Logout</a></td>
+                                <?php if ($_SESSION["privilege"] > 1): ?>
+                                    <td><a href="management.php">Management</a></td>
+                                <?php endif ?>
+                            <?php endif ?>
                         </tr>
                     </table>
                 </p>
