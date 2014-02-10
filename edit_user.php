@@ -64,7 +64,7 @@
     {
         if (isset($_GET["call"])) {
             $result = query("SELECT * FROM op WHERE `call`=?", $_GET["call"]);
-            if ($result === false) {
+            if ($result === false || count($result) === 0) {
                 apologize("Can't find profile for " . $_GET["call"]);
             } else {
                 render("edit_user_form.php", ["title" => "Edit profile - " . $_SESSION["call"],
