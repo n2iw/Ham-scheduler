@@ -20,25 +20,29 @@
         }
 
         $edit = "";
-        if (!empty($_POST["call"])) 
+        if ($_POST["call"] != $_POST["old_call"])
         {
             $edit .= "`call`=\"" . strtoupper($_POST["call"]) ."\", ";
         }
-        if (!empty($_POST["name"]))
+        if ($_POST["name"] != $_POST["old_name"])
         {
             $edit .= "`name`=\"" . $_POST["name"] ."\", ";
         }
-        if (!empty($_POST["email"]))
+        if ($_POST["email"] != $_POST["old_email"])
         {
             $edit .= "`email`=\"" . $_POST["email"] ."\", ";
         }
-        if (!empty($_POST["phone"]))
+        if ($_POST["phone"] != $_POST["old_phone"])
         {
             $edit .= "`phone`=\"" . $_POST["phone"] ."\", ";
         }
         if (!empty($_POST["new_password"]))
         {
             $edit .= "`password`=\"" . crypt($_POST["new_password"]) ."\", ";
+        }
+        if ($_POST["privilege"] != $_POST["old_privilege"])
+        {
+            $edit .= "`privilege`=\"" . $_POST["privilege"] ."\", ";
         }
 
         if ($edit === "")

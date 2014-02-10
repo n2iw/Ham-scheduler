@@ -31,5 +31,12 @@
         <div class="control-group">
             <button type="submit" class="btn">Save</button>
         </div>
+        <div class="control-group">
+            <input name="old_call" type="hidden" value="<?= $call?>"/>
+            <input name="old_name" type="hidden" value="<?= $name?>"/>
+            <input name="old_email" type="hidden" value="<?= $email?>"/>
+            <input name="old_phone" type="hidden" value="<?= $phone?>"/>
+            <input name="old_privilege" type="hidden" value="<?= $privilege?>"/>
+        </div>
     </fieldset>
 </form>
