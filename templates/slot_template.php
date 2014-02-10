@@ -20,8 +20,13 @@
 
 <table id="slots_table">
     <?php 
-        $op_id = $_SESSION["id"];
-        $privilege = $_SESSION["privilege"];
+        if (isset($_SESSION["id"])) {
+            $op_id = $_SESSION["id"];
+            $privilege = $_SESSION["privilege"];
+        } else {
+            $op_id = 1;
+            $privilege = 0;
+        }
     ?>
         <tr>
             <?php

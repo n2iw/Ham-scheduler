@@ -14,13 +14,13 @@
     // requirements
     require("constants.php");
     require("functions.php");
-    date_default_timezone_set('UTC');
+    //date_default_timezone_set('UTC');
 
     // enable sessions
     session_start();
 
     // require authentication for most pages
-    if (!preg_match("{(?:login|logout|register)\.php$}", $_SERVER["PHP_SELF"]))
+    if (!preg_match("{(?:login|logout|register|index)\.php$}", $_SERVER["PHP_SELF"]))
     {
         if (empty($_SESSION["id"]))
         {

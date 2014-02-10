@@ -3,8 +3,14 @@
     require("includes/config.php");
     if (isset($_GET["date"]))
     {
-        $op_id = $_SESSION["id"];
-        $call = $_SESSION["call"];
+        if (isset($_SESSION["id"])) {
+            $op_id = $_SESSION["id"];
+            $call = $_SESSION["call"];
+        } else {
+            $op_id = 1;
+            $call = "Guest";
+        }
+
         $date = $_GET["date"];
         //dump($date);
         
