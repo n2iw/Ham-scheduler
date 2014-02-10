@@ -21,7 +21,7 @@
             WHERE band_mode.band=band.id AND band_mode.mode=mode.id
             ORDER BY band_id, mode_id");
         foreach ($result as $r) { //each iteration is one band mode
-            $result2 = query("SELECT slot.id as id, op.call as op, op.id as op_id,
+            $result2 = query("SELECT slot.id as id, op.callsign as op, op.id as op_id,
                 startTime
                 FROM slot, op
                 WHERE slot.date=? AND slot.band=? AND slot.mode=? AND slot.op=op.id

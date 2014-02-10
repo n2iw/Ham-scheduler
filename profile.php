@@ -5,7 +5,7 @@
     $result = query("SELECT * FROM op WHERE id=?", $_SESSION["id"]);
     if ($result !== false)
     {
-        $call = $result[0]["call"];
+        $call = $result[0]["callsign"];
         $name = $result[0]["name"];
         $email = $result[0]["email"];
         $phone = $result[0]["phone"];

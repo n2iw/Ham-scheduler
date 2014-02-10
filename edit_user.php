@@ -22,7 +22,7 @@
         $edit = "";
         if ($_POST["call"] != $_POST["old_call"])
         {
-            $edit .= "`call`=\"" . strtoupper($_POST["call"]) ."\", ";
+            $edit .= "`callsign`=\"" . strtoupper($_POST["call"]) ."\", ";
         }
         if ($_POST["name"] != $_POST["old_name"])
         {
@@ -67,7 +67,7 @@
     else
     {
         if (isset($_GET["call"])) {
-            $result = query("SELECT * FROM op WHERE `call`=?", $_GET["call"]);
+            $result = query("SELECT * FROM op WHERE `callsign`=?", $_GET["call"]);
             if ($result === false || count($result) === 0) {
                 apologize("Can't find profile for " . $_GET["call"]);
             } else {

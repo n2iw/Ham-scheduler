@@ -48,7 +48,7 @@
 
         $_POST["call"] = strtoupper($_POST["call"]);
         //dump($_POST);
-        if (query("INSERT INTO op (`call`, `password`, `name`, `email`, `phone`, `privilege`) 
+        if (query("INSERT INTO op (`callsign`, `password`, `name`, `email`, `phone`, `privilege`) 
             VALUES(?,?,?,?,?,1)", $_POST["call"], crypt($_POST["password"]), 
             $_POST["name"], $_POST["email"], $_POST["phone"]) === false)
         {

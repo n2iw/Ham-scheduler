@@ -34,7 +34,7 @@
         }
         $_POST["call"] = strtoupper($_POST["call"]);
         //dump($_POST);
-        if (query("INSERT INTO op (`call`, `password`, `name`, `email`, `phone`) 
+        if (query("INSERT INTO op (`callsign`, `password`, `name`, `email`, `phone`) 
             VALUES(?,?,?,?,?)", $_POST["call"], crypt($_POST["password"]), 
             $_POST["name"], $_POST["email"], $_POST["phone"]) === false)
         {
@@ -42,9 +42,9 @@
         }
         else
         {
-            $rows = query("SELECT * FROM op WHERE `call` = ?", $_POST["call"]);
+            $rows = query("SELECT * FROM op WHERE `callsign` = ?", $_POST["call"]);
             $_SESSION["id"] = $rows[0]["id"];
-            $_SESSION["call"] = $rows[0]["call"];
+            $_SESSION["call"] = $rows[0]["callsign"];
             $_SESSION["privilege"] = $rows[0]["privilege"];
             redirect("index.php");
         }

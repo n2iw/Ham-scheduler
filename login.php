@@ -22,7 +22,7 @@
         }
 
         // query database for user
-        $rows = query("SELECT * FROM op WHERE `call` = ?", $_POST["call"]);
+        $rows = query("SELECT * FROM op WHERE `callsign` = ?", $_POST["call"]);
 
         // if we found user, check password
         if (count($rows) == 1)
@@ -35,7 +35,7 @@
             {
                 // remember that user's now logged in by storing user's ID in session
                 $_SESSION["id"] = $row["id"];
-                $_SESSION["call"] = $row["call"];
+                $_SESSION["call"] = $row["callsign"];
                 $_SESSION["privilege"] = $row["privilege"];
 
                 // redirect to home
