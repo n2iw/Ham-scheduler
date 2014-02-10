@@ -72,6 +72,7 @@
                     "call" => $_GET["call"],
                     "name" => $result[0]["name"],
                     "email" => $result[0]["email"],
+                    "privilege" => $result[0]["privilege"],
                     "phone" => $result[0]["phone"]
                 ]); 
             }

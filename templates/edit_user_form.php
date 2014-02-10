@@ -16,6 +16,13 @@
             <input name="phone" placeholder="Phone" type="text" value="<?= $phone?>"/>
         </div>
         <div class="control-group">
+            <select name="privilege">
+            <option value="0" <?= $privilege==0? "selected=\"selected\"" : ""?>>Read only user</option>
+                <option value="1" <?= $privilege==1? "selected=\"selected\"" : ""?>>Normal user</option>
+                <option value="2" <?= $privilege==2? "selected=\"selected\"" : ""?>>Administrator</option>
+            </select>
+        </div>
+        <div class="control-group">
             <input name="new_password" placeholder="New password" type="password"/>
         </div>
         <div class="control-group">
