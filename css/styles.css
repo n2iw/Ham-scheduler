@@ -7,6 +7,11 @@
  * Global CSS.
  ***************************************************************************/
 
+body
+{
+    font-family:  Helvetica, Arial, sans-serif;
+}
+
 .container
 {
     margin-left: auto;
@@ -43,7 +48,7 @@
    border-spacing: 0;
    margin:auto;
    border-collapse:collapse;
-   font-size: 12px;
+   font-size: 10px;
 }
 
 .table th, .table td
@@ -58,7 +63,12 @@
     background-color: #b8cce4;
 }*/
 
-.table td, th
+/*.table td
+{
+    background-color: #b8cce4;
+}*/
+
+.slot_row_1
 {
     background-color: #b8cce4;
 }
@@ -102,12 +112,14 @@ td.my_slot
 {
     background-color: #365f91;
     color: white;
+    font-weight: bold;
 }
 
 td.others_slot
 {
-    background-color: grey;
-    color: white;
+    background-color: #a6a6a6;
+    color: black;
+    font-weight: bold;
 }
 
 #date_nav
@@ -128,15 +140,33 @@ td.others_slot
     border-spacing: 5px;
 }
 
-th.time 
+/*#slots_table tr
+{
+    height: 30px;
+}*/
+
+th.time, th.date
 { 
     white-space:pre;
 }
 
-th.band
+th.band, th.mode, th.time
 {
     background-color: #365f91;
     color: white;
+    font-size: 14px;
+}
+
+
+th.mode, th.time
+{
+    font-size: 11px;
+}
+
+th.date
+{
+    font-size: 14px;
+    background-color: #ffe599;
 }
 
 #date_nav th.not_today
