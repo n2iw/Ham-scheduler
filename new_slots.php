@@ -1,6 +1,6 @@
 <?php 
     require("includes/config.php");
-    apologize("Only Administrator can use this function!");
+    //apologize("Only Administrator can use this function!");
 
     //First insert all possible band and mode
     $result = query("SELECT * FROM band");
@@ -12,14 +12,14 @@
         $bands[] = $r["id"];
     }
 
-    $result = query("SELECT * FROM mode WHERE mode=\"CW\" OR mode=\"Phone\" OR mode=\"RTTY\" 
-        OR mode=\"PSK31\"");
+    $result = query("SELECT * FROM mode WHERE sub_mode=0");
 
     foreach ($result as $r)
     {
         $modes[] = $r["id"];
     }
 
+    //Insert all normal bands and modes
     foreach ($bands as $b)
         foreach($modes as $m)
             query("INSERT IGNORE INTO band_mode (band,mode) VALUES (?,?)",
@@ -89,6 +89,22 @@
                 $fm_band, $fm_id);
             if ($result === false){
                 apologize("Some thing wrong with database insert 80m AM");
+            }
+        }
+    }
+    
+    //Get all bands that don't allow phone mode like 30 meters
+    $result = query("SELECT * FROM band WHERE no_phone=1");
+    if ($result === false){
+        apologize("Some thing wrong with database query no phone bands");
+    } else {
+        foreach ($result as $r) {
+            $no_phone_band = $r["id"];
+            //Delete phone mode
+            $result2 = query("DELETE FROM band_mode WHERE band=? and mode=?", 
+                $no_phone_band, $phone_id);
+            if ($result2 === false){
+                apologize("Some thing wrong with database delete phone mode");
             }
         }
     }
