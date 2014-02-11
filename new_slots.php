@@ -1,6 +1,6 @@
 <?php 
     require("includes/config.php");
-    //apologize("Only Administrator can use this function!");
+    apologize("Only Administrator can use this function!");
 
     //First insert all possible band and mode
     $result = query("SELECT * FROM band");
