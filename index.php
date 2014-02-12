@@ -65,6 +65,6 @@
     }
     else
     {
-        redirect("index.php?date=2014-05-21");
+        redirect("index.php?date=". FIRST_DAY);
     }
 ?>

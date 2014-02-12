@@ -1,10 +1,11 @@
 <div class="table">
-<h1>2014 RDXA W1AW/2 Schedule</h1>
+<h1>2014 <?= CLUB . " " . CALL_SIGN?> Schedule</h1>
 
 <div id="date_nav" class="navigator">
 <table>
     <tr>
-      <?php foreach ($dates as $d): ?>
+      <?php for ($i = 0; $i < count($dates); ++$i): ?>
+          <?php $d = $dates[$i]; ?>
           <th class="<?= $d==$date? "" : "not_today"?>">
             <a href="index.php?date=<?= $d ?>">
             <?php
@@ -13,7 +14,10 @@
                  echo $utc_date->format("D n/j");
             ?>
           </th>
-      <?php endforeach ?>
+        <?php if ($i % 7 == 6 && count($dates) > 7) {
+            echo "</tr><tr>";
+        }?>
+      <?php endfor ?>
 </tr>
 </table>
 </div>
@@ -49,17 +53,17 @@
                 <?php
                     $utc_time = DateTime::createFromFormat(
                                 "Y-m-d Gi", $date . sprintf("%04d",$t), new DateTimeZone('UTC'));
-                    $ny_time = $utc_time;
-                    $ny_time->setTimeZone(new DateTimeZone('America/New_York'));
-                    $ny_time_str = $ny_time->format("D n/j -\ng a");
+                    $local_time = $utc_time;
+                    $local_time->setTimeZone(new DateTimeZone(TIMEZONE));
+                    $local_time_str = $local_time->format("D n/j -\ng a");
 
                     $utc_time = DateTime::createFromFormat(
                                 "Y-m-d Gi", $date . sprintf("%04d",$t+200), new DateTimeZone('UTC'));
-                    $ny_time = $utc_time;
-                    $ny_time->setTimeZone(new DateTimeZone('America/New_York'));
-                    $ny_time_str .= $ny_time->format(' - g a');
+                    $local_time = $utc_time;
+                    $local_time->setTimeZone(new DateTimeZone(TIMEZONE));
+                    $local_time_str .= $local_time->format(' - g a');
                 ?>
-            <th class="time"><?= $ny_time_str  ?></th>
+            <th class="time"><?= $local_time_str  ?></th>
         <?php endforeach?>
         </tr>
 

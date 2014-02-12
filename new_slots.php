@@ -1,6 +1,28 @@
 <?php 
     require("includes/config.php");
-    apologize("Only Administrator can use this function!");
+    //apologize("Only Administrator can use this function!");
+
+    date_default_timezone_set('UTC');
+    $first_date = DateTime::createFromFormat(
+                "Y-m-d", trim(FIRST_DAY) , new DateTimeZone('UTC'));
+    //Insert every operating day into the list
+    for ($i = 0; $i < trim(DAYS); ++$i) {
+        $dates[] = date("Y-m-d", mktime(0,0,0,substr(trim(FIRST_DAY),5,2), 
+                   substr(trim(FIRST_DAY), 8, 2) + $i, substr(trim(FIRST_DAY), 0, 4)));
+    }
+
+    //Add second operating period
+    if (trim(FIRST_DAY_2) !== "" && trim(DAYS_2) !== "" && trim(DAYS_2) !== 0) {
+        $first_date = DateTime::createFromFormat(
+                    "Y-m-d", trim(FIRST_DAY_2) , new DateTimeZone('UTC'));
+        for ($i = 0; $i < trim(DAYS_2); ++$i) {
+            //Insert every operating day into the list
+            $dates[] = date("Y-m-d", mktime(0,0,0,substr(trim(FIRST_DAY_2),5,2), 
+                       substr(trim(FIRST_DAY_2), 8, 2) + $i, substr(trim(FIRST_DAY_2), 0, 4)));
+        }
+    }
+    //dump($dates);
+    //$dates = ["2014-5-21", "2014-5-22", "2014-5-23", "2014-5-24", "2014-5-25", "2014-5-26", "2014-5-27" ];
 
     //First insert all possible band and mode
     $result = query("SELECT * FROM band");
@@ -17,6 +39,12 @@
     foreach ($result as $r)
     {
         $modes[] = $r["id"];
+    }
+
+    //Clear band mode table first
+    $reslut = query("TRUNCATE band_mode");
+    if ($result === false) {
+        apologize("Clear table band_mode failed!");
     }
 
     //Insert all normal bands and modes
@@ -111,9 +139,14 @@
     
     //Now insert all the slots
 
+    //Clear slot table first
+    $reslut = query("TRUNCATE slot");
+    if ($result === false) {
+        apologize("Clear table slot failed!");
+    }
+
     $result = query("SELECT * FROM band_mode");
 
-    $dates = ["2014-5-21", "2014-5-22", "2014-5-23", "2014-5-24", "2014-5-25", "2014-5-26", "2014-5-27" ];
 
     foreach ($dates as $d)
         for ($t = 0; $t <= 2200; $t += 200)
