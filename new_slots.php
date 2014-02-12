@@ -1,6 +1,6 @@
 <?php 
     require("includes/config.php");
-    //apologize("Only Administrator can use this function!");
+    apologize("Only Administrator can use this function!");
 
     date_default_timezone_set('UTC');
     $first_date = DateTime::createFromFormat(
@@ -27,8 +27,8 @@
     //First insert all possible band and mode
     $result = query("SELECT * FROM band");
 
-    $bands = [];
-    $modes = [];
+    $bands = array();
+    $modes = array();
     foreach ($result as $r)
     {
         $bands[] = $r["id"];

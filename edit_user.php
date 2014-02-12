@@ -71,18 +71,18 @@
             if ($result === false || count($result) === 0) {
                 apologize("Can't find profile for " . $_GET["call"]);
             } else {
-                render("edit_user_form.php", ["title" => "Edit profile - " . $_SESSION["call"],
+                render("edit_user_form.php", array("title" => "Edit profile - " . $_SESSION["call"],
                     "id" => $result[0]["id"],
                     "call" => $_GET["call"],
                     "name" => $result[0]["name"],
                     "email" => $result[0]["email"],
                     "privilege" => $result[0]["privilege"],
                     "phone" => $result[0]["phone"]
-                ]); 
+                )); 
             }
         } else {
             //choose user
-            render("choose_user_form.php", ["title" => "Choose user - " . $_SESSION["call"]]);
+            render("choose_user_form.php", array("title" => "Choose user - " . $_SESSION["call"]));
         }
     }
 ?>

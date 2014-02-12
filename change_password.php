@@ -44,6 +44,6 @@
     }
     else
     {
-        render("password_form.php", ["title" => "Change Password - " . $_SESSION["call"]]); 
+        render("password_form.php", array("title" => "Change Password - " . $_SESSION["call"])); 
     }
 ?>

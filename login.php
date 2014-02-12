@@ -49,7 +49,7 @@
     else
     {
         // else render form
-        render("login_form.php", ["title" => "Log In"]);
+        render("login_form.php", array("title" => "Log In"));
     }
 
 ?>

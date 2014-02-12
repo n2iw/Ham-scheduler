@@ -16,7 +16,7 @@
      */
     function apologize($message)
     {
-        render("apology.php", ["message" => $message]);
+        render("apology.php", array("message" => $message));
         exit;
     }
 
@@ -25,7 +25,7 @@
      */
     function succeed($message)
     {
-        render("succeed.php", ["message" => $message]);
+        render("succeed.php", array("message" => $message));
         exit;
     }
     /**
@@ -100,11 +100,11 @@
         }
 
         // return stock as an associative array
-        return [
+        return array(
             "symbol" => $data[0],
             "name" => $data[1],
             "price" => $data[2],
-        ];
+        );
     }
 
     /**
@@ -143,8 +143,9 @@
         $statement = $handle->prepare($sql);
         if ($statement === false)
         {
+            $err_info = $handle->errorInfo();
             // trigger (big, orange) error
-            trigger_error($handle->errorInfo()[2], E_USER_ERROR);
+            trigger_error($err_info[2], E_USER_ERROR);
             exit;
         }
 
@@ -202,7 +203,7 @@
     /**
      * Renders template, passing in values.
      */
-    function render($template, $values = [])
+    function render($template, $values = array())
     {
         // if template exists, render it
         if (file_exists("templates/$template"))

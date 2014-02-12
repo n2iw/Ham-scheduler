@@ -11,6 +11,6 @@
         $phone = $result[0]["phone"];
     }
 
-    render("profile_template.php", ["title" => "Profile - $call", "call"=>$call,
-    "name"=>$name, "email"=>$email, "phone"=>$phone]); 
+    render("profile_template.php", array("title" => "Profile - $call", "call"=>$call,
+    "name"=>$name, "email"=>$email, "phone"=>$phone)); 
 ?>

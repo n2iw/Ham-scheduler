@@ -62,6 +62,6 @@
     }
     else
     {
-        render("add_user_form.php", ["title"=>"Add user - " . $_SESSION["call"]]);
+        render("add_user_form.php", array("title"=>"Add user - " . $_SESSION["call"]));
     }
 ?>

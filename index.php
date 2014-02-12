@@ -17,7 +17,7 @@
         //get all the bands
         $result = query("SELECT * FROM band ORDER BY id");
         foreach ($result as $r) {
-            $bands[] = ["id"=>$r["id"], "band"=>$r["band"], "modes"=>[]];
+            $bands[] = array("id"=>$r["id"], "band"=>$r["band"], "modes"=>array());
         }
 
         foreach ($bands as &$b) { //each iteration is a band
@@ -32,19 +32,19 @@
                     FROM slot, op
                     WHERE slot.date=? AND slot.band=? AND slot.mode=? AND slot.op=op.id
                     ORDER BY startTime", $date, $b["id"], $r["mode_id"]);
-                $slots = [];
+                $slots = array();
                 foreach ($result2 as $r2) {
-                    $slots[] = [
+                    $slots[] = array(
                         "id"=>$r2["id"],
                         "time"=>$r2["startTime"], //Maybe not necessory
                         "op_id"=>$r2["op_id"],
                         "op"=>$r2["op"]
-                    ];
+                    );
                 }
-                $b["modes"][] = [
+                $b["modes"][] = array(
                     "mode"=>$r["mode"],
                     "slots"=>$slots
-                ];
+                );
             }
         }
 
@@ -60,8 +60,8 @@
         //dump($bands);
 
 
-        render("slot_template.php", ["title"=>"Time Slots - $call", "date" => $date,
-            "times" => $times, "dates" => $dates, "bands"=>$bands ]);
+        render("slot_template.php", array("title"=>"Time Slots - $call", "date" => $date,
+            "times" => $times, "dates" => $dates, "bands"=>$bands ));
     }
     else
     {
