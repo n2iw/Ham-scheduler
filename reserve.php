@@ -12,10 +12,15 @@
             $result = query("UPDATE slot SET op=? WHERE id=? AND (op=0 OR op=?)", 
                 $_POST["op"],$_POST["id"],$_SESSION["id"]);
         }
-        if ($result === false)
+        if ($result === false) {
             apologize("Failed to take/cancel slot! Please try again later.");
-        else
-            redirect("index.php?date=" . $_POST["date"]);
+        } else {
+            if (isset($_POST["date"])) {
+                redirect("index.php?date=" . $_POST["date"]);
+            } else {
+                redirect("my_slots.php");
+            }
+        }
 
     }else
     {

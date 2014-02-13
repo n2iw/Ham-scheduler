@@ -68,7 +68,7 @@ body
     background-color: #b8cce4;
 }*/
 
-.slot_row_1
+.slot_row_1, #my_slots tr:nth-child(odd)
 {
     background-color: #b8cce4;
 }
@@ -145,12 +145,12 @@ td.others_slot
     height: 30px;
 }*/
 
-th.time, th.date
+th.time, th.date, td.time
 { 
     white-space:pre;
 }
 
-th.band, th.mode, th.time
+th.band, th.mode, th.time, #my_slots th
 {
     background-color: #365f91;
     color: white;
@@ -172,5 +172,10 @@ th.date
 #date_nav th.not_today
 {
     background-color: white;
+}
+
+#my_slots table
+{
+    font-size: 14px;
 }
 

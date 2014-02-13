@@ -27,6 +27,7 @@
                             <?php if (!isset($_SESSION["id"])): ?>
                                 <td><a href="login.php">Login</a></td>
                             <?php else :?>
+                                <td><a href="my_slots.php">My Slots</a></td>
                                 <td><a href="profile.php">Profile</a></td>
                                 <td><a href="logout.php">Logout</a></td>
                                 <?php if ($_SESSION["privilege"] > 1): ?>
