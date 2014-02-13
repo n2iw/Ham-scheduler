@@ -28,6 +28,12 @@
         {
             apologize("passwords don't match!");
         }
+        else if (strlen($_POST["password"]) < 6 
+            || $_POST["password"] == $_POST["call"])
+        {
+            apologize("Password must be at least 6 characters long, and 
+               can't be the same as Call sign!"); 
+        }
 
         foreach ( $_POST as &$p){
             $p = htmlspecialchars(trim($p));

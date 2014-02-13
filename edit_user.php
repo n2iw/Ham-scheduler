@@ -18,6 +18,13 @@
         {
             apologize("New passwords don't match!");
         }
+        else if (strlen($_POST["new_password"]) < 6 
+            || $_POST["new_password"] == $_POST["old_call"]
+            || $_POST["new_password"] == $_POST["call"])
+        {
+            apologize("Password must be at least 6 characters long, and 
+               can't be the same as Call sign!"); 
+        }
 
         $edit = "";
         if ($_POST["call"] != $_POST["old_call"])
