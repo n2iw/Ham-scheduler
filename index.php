@@ -60,8 +60,9 @@
         //dump($bands);
 
 
+        //dump($_SERVER["REQUEST_URI"]);
         render("slot_template.php", array("title"=>"Time Slots - $call", "date" => $date,
-            "times" => $times, "dates" => $dates, "bands"=>$bands ));
+            "times" => $times, "dates" => $dates, "bands"=>$bands, "url"=>$_SERVER["REQUEST_URI"]));
     }
     else
     {

@@ -15,11 +15,7 @@
         if ($result === false) {
             apologize("Failed to take/cancel slot! Please try again later.");
         } else {
-            if (isset($_POST["date"])) {
-                redirect("index.php?date=" . $_POST["date"]);
-            } else {
-                redirect("my_slots.php");
-            }
+            redirect($_POST["url"]);
         }
 
     }else

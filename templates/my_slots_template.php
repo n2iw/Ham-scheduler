@@ -1,5 +1,5 @@
 <div class="table" id="my_slots">
-<h1>Time Slots for <?= $_SESSION["call"]?></h1>
+<h1>Time Slots for <?= $call?></h1>
 <table>
     <tr>
         <th>UTC Date</th>
@@ -35,6 +35,7 @@
         <td><form action="reserve.php" method="POST">
                 <input type="hidden" name="id" value="<?= $s["id"] ?>">
                 <input type="hidden" name="op" value="0">
+                <input type="hidden" name="url" value="<?= $url?>">
                 <input type="submit" value="Cancel">
         </form></td>
     </tr>

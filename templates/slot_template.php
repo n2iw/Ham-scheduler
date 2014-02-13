@@ -97,6 +97,7 @@
                                     <input type="hidden" name="date" value="<?= $date?>">
                                     <input type="hidden" name="id" value="<?= $s["id"]?>">
                                     <input type="hidden" name="op" value="<?= $op_id?>">
+                                    <input type="hidden" name="url" value="<?= $url?>">
                                     <input type="submit" value="Reserve">
                                 </form> 
                             <?php elseif ($s["op_id"] == $op_id || $privilege > 1): ?>
@@ -104,6 +105,7 @@
                                     <input type="hidden" name="date" value="<?= $date?>">
                                     <input type="hidden" name="id" value="<?= $s["id"]?>">
                                     <input type="hidden" name="op" value="0">
+                                    <input type="hidden" name="url" value="<?= $url?>">
                                     <input type="submit" value="Cancel">
                                 </form> 
                             <?php endif?>
