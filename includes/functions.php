@@ -23,9 +23,9 @@
     /**
      * Indicate user with message
      */
-    function succeed($message)
+    function succeed($values)
     {
-        render("succeed.php", array("message" => $message));
+        render("succeed.php", $values);
         exit;
     }
     /**

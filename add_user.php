@@ -56,7 +56,8 @@
         }
         else
         {
-            succeed("User added!");
+            succeed(array("message"=>"User added!", "url"=>$_SERVER["PHP_SELF"], 
+                "link_message"=>"Add another user"));
             //redirect("add_user.php");
         }
     }

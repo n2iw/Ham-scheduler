@@ -61,7 +61,8 @@
         }
         else
         {
-            succeed("User profile saved!");
+            succeed(array("message"=>"User profile saved!", "url"=>$_SERVER["PHP_SELF"], 
+                "link_message"=>"Edit another user"));
         }
     }
     else

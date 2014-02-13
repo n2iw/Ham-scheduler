@@ -38,7 +38,8 @@
         }
         else
         {
-            succeed("Password changed!");
+            succeed(array("message"=>"Password changed!", "url"=>"logout.php", 
+                "link_message"=>"Logout"));
             //redirect("login.php");
         }
     }
