@@ -18,7 +18,7 @@
         {
             apologize("New passwords don't match!");
         }
-        else if (strlen($_POST["new_password"]) < 6 
+        else if ( (strlen($_POST["new_password"]) < 6 && strlen($_POST["new_password"]) != 0)
             || $_POST["new_password"] == $_POST["old_call"]
             || $_POST["new_password"] == $_POST["call"])
         {
