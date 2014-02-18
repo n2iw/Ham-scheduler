@@ -14,7 +14,7 @@
                 "band"=>$r["band"], "mode"=>$r["mode"]); 
         }
         if (!isset($slots)) {
-            apologize("You haven't reserve any time slots yet!");
+            apologize("You haven't reserved any time slots yet!");
         } else {
             render("my_slots_template.php", array("title"=>"My Slots - " . $_SESSION["call"],
                 "slots"=>$slots, "call"=>$_SESSION["call"], "url"=>$_SERVER["REQUEST_URI"]));
