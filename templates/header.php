@@ -20,7 +20,6 @@
         <div class="container-fluid">
 
             <div id="nav" class="navigator">
-                <p>
                     <table>
                         <tr>
                             <td><a href="index.php">Home</a></td>
@@ -36,7 +35,6 @@
                             <?php endif ?>
                         </tr>
                     </table>
-                </p>
             </div>
             <div id="middle">
 
