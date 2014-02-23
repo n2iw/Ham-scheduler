@@ -14,8 +14,10 @@ body
 
 .container
 {
-    margin-left: auto;
-    margin-right: auto;
+    /*width:90%;
+    margin: auto;*/
+    /*margin-left: auto;
+    margin-right: auto;*/
     text-align: center;
 }
 
@@ -58,16 +60,6 @@ body
     vertical-align: middle;
 }
 
-/*.table tr:nth-child(odd)
-{
-    background-color: #b8cce4;
-}*/
-
-/*.table td
-{
-    background-color: #b8cce4;
-}*/
-
 .slot_row_1, #my_slots tr:nth-child(odd)
 {
     background-color: #b8cce4;
@@ -79,7 +71,6 @@ body
     padding: 10px;
 }
 
-/*#nav td, #date_nav th, #managment_nav td */
 .navigator td, .navigator th
 {
     padding: 10px;
@@ -89,14 +80,12 @@ body
     font-size: 18px;
 }
 
-/*#nav a, #date_nav a, #managment_nav a*/
 .navigator a
 {
     text-decoration: none;
     color: black;
 }
 
-/*#nav a.link #nav a.visited, #date_nav a.link #date_nav a.visited*/
 .navigator a.link .navigator a.visited
 {
     font-style: none;
@@ -132,7 +121,6 @@ td.others_slot
     font-size: 12px;
 }
 
-/*#date_nav table, #nav table*/
 .navigator table
 {
     margin: auto;
@@ -140,17 +128,18 @@ td.others_slot
     border-spacing: 5px;
 }
 
-/*#slots_table tr
+#slots_table, #slots_table_head
 {
-    height: 30px;
-}*/
+    table-layout: fixed;
+    width: 1034px;
+}
 
 th.time, th.date, td.time
 { 
     white-space:pre;
 }
 
-th.band, th.mode, th.time, #my_slots th
+th.band, th.mode,th.time_name, th.time, #my_slots th
 {
     background-color: #365f91;
     color: white;
@@ -158,7 +147,7 @@ th.band, th.mode, th.time, #my_slots th
 }
 
 
-th.mode, th.time
+th.mode, th.time, th.time_name
 {
     font-size: 11px;
 }
@@ -167,7 +156,19 @@ th.date
 {
     font-size: 14px;
     background-color: #ffe599;
+    width: 63px;
 }
+
+th.time_name
+{
+    width: 35px;
+}
+
+th.time
+{
+    width: 72px;
+}
+
 
 #date_nav th.not_today
 {
@@ -179,3 +180,25 @@ th.date
     font-size: 14px;
 }
 
+.fixed{
+  top:0;
+  position:fixed;
+  /*width:auto;*/
+  margin: auto;
+  display:none;
+  border:none;
+  table-layout:fixed;
+}
+
+.scrollMore{
+  margin-top:600px;
+}
+
+.up{
+  cursor:pointer;
+}
+
+#guides
+{
+    font-size: 11px;
+}

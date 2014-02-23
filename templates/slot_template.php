@@ -1,3 +1,7 @@
+<div id="guides" class="guides">
+    <p><a href="http://nyqp.org/wordpress/wp-content/uploads/2014/02/RDXA_W1AW-2_NY_Schedule_Guidelines.pdf" target="_blank">RDXA W1AW/2 NY Schedule Guidelines</a></p>
+    <p><a href="http://nyqp.org/wordpress/wp-content/uploads/2014/02/RDXA_W1AW-2_NY_Operating_Guidlines.pdf" target="_blank">RDXA W1AW/2 NY Operating Guidelines</a></p>
+</div>
 <div class="table">
 <h1>2014 <?= CLUB . " " . CALL_SIGN?> Schedule</h1>
 
@@ -6,14 +10,14 @@
     <tr>
       <?php for ($i = 0; $i < count($dates); ++$i): ?>
           <?php $d = $dates[$i]; ?>
-          <th class="<?= $d==$date? "" : "not_today"?>">
+          <th class="<?= $d==$date? "today" : "not_today"?>">
             <a href="index.php?date=<?= $d ?>">
             <?php
                  $utc_date = DateTime::createFromFormat(
                              "Y-m-d", $d, new DateTimeZone('UTC'));
                  echo $utc_date->format("D n/j");
             ?>
-          </th>
+          </a></th>
         <?php if ($i % 7 == 6 && count($dates) > 7) {
             echo "</tr><tr>";
         }?>
@@ -32,14 +36,14 @@
             $privilege = 0;
         }
     ?>
-        <tr>
+        <thead><tr>
             <?php
                 $utc_date = DateTime::createFromFormat(
                             "Y-m-d Gi", $date . "0000", new DateTimeZone('UTC'));
                 $utc_day = $utc_date->format("D\nn/j");
             ?>
             <th class="date" rowspan="2"><?= $utc_day ?></th>
-            <th class="time"><?= "UTC"?></th>
+            <th class="time_name"><?= "UTC"?></th>
         <?php //Table Header line UTC time
             foreach ($times as $t): ?>
             <th class="time"><?php printf("%04d-%04d",$t,($t + 200 == 2400)? 0:($t + 200)); ?></th>
@@ -47,7 +51,7 @@
         </tr>
         
         <tr>
-            <th class="time"><?= "Local" ?></th>
+            <th class="time_name"><?= "Local" ?></th>
         <?php //Table Header line local time
             foreach ($times as $t): ?>
                 <?php
@@ -65,13 +69,14 @@
                 ?>
             <th class="time"><?= $local_time_str  ?></th>
         <?php endforeach?>
-        </tr>
+        </tr></thead>
 
+        <tbody>
         <?php //Data lines
             $row_count = 0;
             foreach ($bands as $b): ?>
                 <tr class="slot_row_<?= $row_count % 2?>">
-                <th class="band" rowspan="<?= count($b["modes"])?>"><?= $b["band"] ?></th>
+                <th class="band" rowspan="<?= count($b["modes"])?>"><?= htmlspecialchars($b["band"]) ?></th>
                 <?php //dump($b["modes"]); ?>
                 <?php for ($i = 0; $i < count($b["modes"]); ++$i): ?>
                     <?php $m = $b["modes"][$i]; 
@@ -115,5 +120,8 @@
             <?php ++$row_count; ?>
             </tr>
             <?php endforeach?>
+            </tbody>
 </table>
 </div>
+  <script src='js/jquery-1.11.0.min.js'></script>
+  <script src="js/scroll.js"></script>
