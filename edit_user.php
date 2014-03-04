@@ -26,6 +26,12 @@
                can't be the same as Call sign!"); 
         }
 
+        //dump(array($_POST["id"], $_SESSION["id"]));
+        if ($_POST["id"] == $_SESSION["id"] && $_POST["privilege"] != 2)
+        {
+            apologize("You can't demote yourself!");
+        }
+
         $edit = "";
         if ($_POST["call"] != $_POST["old_call"])
         {
