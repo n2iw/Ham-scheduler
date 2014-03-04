@@ -1,7 +1,3 @@
-<div id="guides" class="guides">
-    <p><a href="http://nyqp.org/wordpress/wp-content/uploads/2014/02/RDXA_W1AW-2_NY_Schedule_Guidelines.pdf" target="_blank">RDXA W1AW/2 NY Schedule Guidelines</a></p>
-    <p><a href="http://nyqp.org/wordpress/wp-content/uploads/2014/02/RDXA_W1AW-2_NY_Operating_Guidlines.pdf" target="_blank">RDXA W1AW/2 NY Operating Guidelines</a></p>
-</div>
 <div class="table">
 <h1>2014 <?= CLUB . " " . CALL_SIGN?> Schedule</h1>
 
