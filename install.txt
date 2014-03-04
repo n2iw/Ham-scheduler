@@ -1,0 +1,21 @@
+1) Create a new database in MySQL
+2) Create a new user in MySQL (or you can use an existed user), make sure
+    this user has all privilege for the database created in step 1
+3) Use phpMyAdmin to load initial.sql into database created in step 1
+4) Make a copy of includes/constants-init.php name it includes/constats.php,
+    Edit includes/constants.php, fill in information that fits your club
+    A line like: define("DATABASE", "W1AW_2_2014_test"); you will want to
+    change the second string, leave the first string untouched. 
+    lines with ***** above it are most important ones     
+5) Upload files to server, and change their permissions, make sure all .php
+    files are 600, all folders are 711 and all other files are 644
+6) In your browser, goto your schedule application home page 
+    such as rdxa.com/w1aw-schedule (ignore Notices in the page), 
+    login with user: N2IW password: MingJamesYing
+7) In your browser, goto your schedule application location /install.php 
+    such as rdxa.com/w1aw-schedule/install.php, you should see a success message
+8) Delete install.php install.txt and initial.sql from server
+9) Add users and Administrators, in manage/Add user page
+10) Change the password of user N2IW
+11)Login with other Administrator user
+12)Edit user N2IW, make it read only user (optional)

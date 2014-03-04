@@ -1,5 +1,9 @@
 <?php 
     require("includes/config.php");
+
+    if ($_SESSION["privilege"] < 2) {
+        apologize("Only Administrators can use this page!");
+    }
     apologize("Only Administrator can use this function!");
 
     date_default_timezone_set('UTC');
