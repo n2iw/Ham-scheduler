@@ -184,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `op` (
   `email` varchar(100) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `privilege` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '0:no right, 1:normal, 2:admin',
+  `privilege` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '0:read-only, 1:normal, 2:admin',
   PRIMARY KEY (`id`),
   UNIQUE KEY `call_2` (`callsign`),
   KEY `call` (`callsign`)
@@ -196,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `op` (
 
 INSERT INTO `op` (`id`, `callsign`, `name`, `email`, `phone`, `password`, `privilege`) VALUES
 (0, '', 'None', 'None', '', '', 0),
-(1, 'N2IW', 'James Ying', 'n2iw@arrl.net', '585-755-6689', '$1$3NkieKGY$9mcOX1rlliVSB.cpkvth01', 2);
+(2, 'N2IW', 'James Ying', 'n2iw@arrl.net', '585-555-5555', '$1$3NkieKGY$9mcOX1rlliVSB.cpkvth01', 2);
 
 -- --------------------------------------------------------
 
