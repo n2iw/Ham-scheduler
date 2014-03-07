@@ -32,7 +32,7 @@
         <td class="time"><?= $local_time_str?></td>
         <td><?= $s["band"]?></td>
         <td><?= $s["mode"]?></td>
-        <td><form action="reserve.php" method="POST">
+        <td class="<?= $call == $_SESSION["call"] ? "my_slot" : "others_slot"?>"><form action="reserve.php" method="POST">
                 <input type="hidden" name="id" value="<?= $s["id"] ?>">
                 <input type="hidden" name="op" value="0">
                 <input type="hidden" name="url" value="<?= $url?>">
@@ -42,3 +42,5 @@
     <?php endforeach ?>
 </table>
 </div>
+<script src='js/jquery-1.11.0.min.js'></script>
+<script src="js/confirm.js" type="text/javascript" charset="utf-8"></script>

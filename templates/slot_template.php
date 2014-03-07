@@ -84,7 +84,7 @@
                     <?php //Actual data slots
                     foreach ($m["slots"] as $s): ?>
                         <?php if ($s["op_id"] == 0)
-                                  $className = "";
+                                  $className = "empty_slot";
                               else if ($s["op_id"] == $op_id)
                                   $className = "my_slot";
                               else 
@@ -121,3 +121,4 @@
 </div>
   <script src='js/jquery-1.11.0.min.js'></script>
   <script src="js/scroll.js"></script>
+  <script src="js/confirm.js"></script>
