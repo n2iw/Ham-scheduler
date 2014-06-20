@@ -68,8 +68,7 @@ CREATE TABLE IF NOT EXISTS `band_mode` (
   `band` int(11) NOT NULL,
   `mode` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `band` (`band`,`mode`),
-  UNIQUE KEY `band_2` (`band`,`mode`)
+  UNIQUE KEY `band` (`band`,`mode`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=69 ;
 
 --
@@ -186,8 +185,7 @@ CREATE TABLE IF NOT EXISTS `op` (
   `password` varchar(255) NOT NULL,
   `privilege` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '0:read-only, 1:normal, 2:admin',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `call_2` (`callsign`),
-  KEY `call` (`callsign`)
+  UNIQUE KEY `call` (`callsign`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
