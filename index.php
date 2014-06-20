@@ -28,7 +28,7 @@
                 ORDER BY mode_id", $b["id"]);
             foreach ($result as $r) { //each iteration is one mode
                 $result2 = query("SELECT slot.id as id, op.callsign as op, op.id as op_id,
-                    startTime
+                    startTime, endTime
                     FROM slot, op
                     WHERE slot.date=? AND slot.band=? AND slot.mode=? AND slot.op=op.id
                     ORDER BY startTime", $date, $b["id"], $r["mode_id"]);
@@ -37,6 +37,7 @@
                     $slots[] = array(
                         "id"=>$r2["id"],
                         "time"=>$r2["startTime"], //Maybe not necessory
+                        "endTime"=>$r2["endTime"], //Maybe not necessory
                         "op_id"=>$r2["op_id"],
                         "op"=>$r2["op"]
                     );
@@ -48,9 +49,9 @@
             }
         }
 
-        $result = query("SELECT DISTINCT startTime FROM `slot` ORDER BY startTime");
+        $result = query("SELECT DISTINCT startTime,endTime FROM `slot` ORDER BY startTime");
         foreach ($result as $r){
-            $times[] = $r["startTime"];
+            $times[] = array($r["startTime"], $r["endTime"]);
         }
 
         $result = query("SELECT DISTINCT date FROM `slot` ORDER BY date");

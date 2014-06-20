@@ -25,6 +25,9 @@
     // ***** your operating callsign
     define("CALL_SIGN", "W1AW/2");
     
+    // how long a time slot should be (in whole hours and 24 can be divided by it)
+    define("TIME_SLOT_LENGTH", 2);
+    
     // ***** your first date of operating period, must be like "YYYY-MM-DD"
     define("FIRST_DAY", "2014-05-21");
 

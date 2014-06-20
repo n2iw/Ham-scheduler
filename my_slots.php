@@ -2,7 +2,7 @@
     require("includes/config.php");
 
     $rows = query("SELECT slot.id as id, slot.date as date, slot.startTime as time, 
-        band.band as band, mode.mode as mode 
+        slot.endTime as endTime, band.band as band, mode.mode as mode 
         FROM slot,band,mode 
         WHERE slot.band=band.id AND slot.mode=mode.id AND op=?
         ORDER BY slot.date, slot.startTime, slot.band, slot.mode", $_SESSION["id"]);
@@ -10,7 +10,7 @@
         apologize("Something wrong with finding slots for you!");
     } else {
         foreach ($rows as $r) {
-            $slots[] = array("id"=>$r["id"] , "date"=>$r["date"], "time"=>$r["time"], 
+            $slots[] = array("id"=>$r["id"] , "date"=>$r["date"], "time"=>array($r["time"],$r["endTime"]), 
                 "band"=>$r["band"], "mode"=>$r["mode"]); 
         }
         if (!isset($slots)) {

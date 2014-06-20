@@ -42,7 +42,7 @@
             <th class="time_name"><?= "UTC"?></th>
         <?php //Table Header line UTC time
             foreach ($times as $t): ?>
-            <th class="time"><?php printf("%04d-%04d",$t,($t + 200 == 2400)? 0:($t + 200)); ?></th>
+            <th class="time"><?php printf("%04d-%04d",$t[0],$t[1] == 2400 ? 0 : $t[1]); ?></th>
         <?php endforeach?>
         </tr>
         
@@ -52,13 +52,13 @@
             foreach ($times as $t): ?>
                 <?php
                     $utc_time = DateTime::createFromFormat(
-                                "Y-m-d Gi", $date . sprintf("%04d",$t), new DateTimeZone('UTC'));
+                                "Y-m-d Gi", $date . sprintf("%04d",$t[0]), new DateTimeZone('UTC'));
                     $local_time = $utc_time;
                     $local_time->setTimeZone(new DateTimeZone(TIMEZONE));
                     $local_time_str = $local_time->format("D n/j -\ng a");
 
                     $utc_time = DateTime::createFromFormat(
-                                "Y-m-d Gi", $date . sprintf("%04d",$t+200), new DateTimeZone('UTC'));
+                                "Y-m-d Gi", $date . sprintf("%04d",$t[1]), new DateTimeZone('UTC'));
                     $local_time = $utc_time;
                     $local_time->setTimeZone(new DateTimeZone(TIMEZONE));
                     $local_time_str .= $local_time->format(' - g a');
