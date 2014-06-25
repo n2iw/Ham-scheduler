@@ -1,3 +1,4 @@
 .*
 includes/constants.php
+fully-install.php
 !.gitignore
