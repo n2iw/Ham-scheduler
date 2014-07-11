@@ -4,19 +4,19 @@
 
 [RDXA W1AW/2 Schedule Web Application](http://rdxa.com/w1aw-schedule) is designed for our club RDXA for its W1AW/2 New York operating on May, 2014. Since it had been launched, I've got several emails from other clubs, indicating their interests in using my application. So I modified the application to fit the needs of all the other clubs/states.
 
-This application is FREE for amateur radio society, here is a [test site](http://www.n2iw.com/w1aw-test), you can register and play. Be aware: all fields are required, but you can enter anything except password, you have to enter at least 6 characters or numbers for it, and it can't be the same as you call sign. All registered user have normal privilege, if you want to see what an Administrator can do, drop me a line, I'll give you an Administrator privilege to play with. [Contact me](http://www.n2iw.com/contact.php) if you are interested.
+This application is FREE for amateur radio society, here is a [test site](w1aw-test), you can register and play. Be aware: all fields are required, but you can enter anything except password, you have to enter at least 6 characters or numbers for it, and it can't be the same as you call sign. All registered user have normal privilege, if you want to see what an Administrator can do, drop me a line, I'll give you an Administrator privilege to play with. [Contact me](contact.php) if you are interested.
 
 ##Clubs using this application
 
-- Rochester DX Association [(New York, May 21 - 27)](http://rdxa.com/w1aw-schedule)
-- Puerto Rico Amateur Radio League [(Puerto Rico, Apr. 9 - 15, Oct. 23 - 29)](http://n2iw.com/prarl)
-- NR0X [(Iowa, Mar. 26 - Apr. 1)](http://nr0x.org/w1aw-schedule)
-- Edmond Amateur Radio Society [(Oklahoma, Aug. 13 - 19)](http://k5eok.org/w1aw-schedule)
-- Long Island DX Society [(Maine, Aug. 27 - Sep. 2, Dec. 3 - 9)](http://n2iw.com/lidxs)
-- Eau Claire Amateur Radio Club [(Wisconsin July, 2 - 8)](http://ecarc.org/w1aw-schedule)
-- W8HC [(West Virginia, Oct. 22 - 28)](http://w8tn.com/w1aw-8/)
-- KE7X [(Montana, June 18 - 24)](http://w1awinmontana.org/scheduler)
-- Radio Amateurs of Northern Vermont [(Vermont, Mar. 26 - Apr. 1)](http://www.hamclass.net/w1aw-schedule)
+- [Rochester DX Association](http://www.rdxa.com/) [(New York, May 21 - 27)](http://rdxa.com/w1aw-schedule)
+- [Puerto Rico Amateur Radio League](http://prarl.org/) [(Puerto Rico, Apr. 9 - 15, Oct. 23 - 29)](http://n2iw.com/prarl)
+- [NR0X](http://nr0x.org/) [(Iowa, Mar. 26 - Apr. 1)](http://nr0x.org/w1aw-schedule)
+- [Edmond Amateur Radio Society](http://www.k5eok.org/) [(Oklahoma, Aug. 13 - 19)](http://k5eok.org/w1aw-schedule)
+- [Long Island DX Society](http://n1li.webs.com/) [(Maine, Aug. 27 - Sep. 2, Dec. 3 - 9)](http://n2iw.com/lidxs)
+- [Eau Claire Amateur Radio Club](http://ecarc.org/) [(Wisconsin, July, 2 - 8)](http://ecarc.org/w1aw-schedule)
+- [W8HC](http://www.w8hc.com/) [(West Virginia, Oct. 22 - 28)](http://w8tn.com/w1aw-8/)
+- [KE7X](http://www.ke7x.com/) [(Montana, June 18 - 24)](http://w1awinmontana.org/scheduler)
+- [Radio Amateurs of Northern Vermont](http://www.ranv.org/) [(Vermont, Mar. 26 - Apr. 1)](http://www.hamclass.net/w1aw-schedule)
 
 ##System Requirements
 
@@ -31,7 +31,7 @@ Here is some basic features
 
 ###User Management
 
-Users can only be added by a Administrator. On our [test site](http://www.n2iw.com/w1aw-test) you can register by yourself, but not on a real schedule website.
+Users can only be added by a Administrator. On our [test site](w1aw-test) you can register by yourself, but not on a real schedule website.
 
 ###Password Management
 
