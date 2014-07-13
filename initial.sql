@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2014 at 04:09 AM
--- Server version: 5.6.13
+-- Generation Time: Jul 13, 2014 at 08:34 PM
+-- Server version: 5.6.17
 -- PHP Version: 5.4.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `W1AW_2_2014`
+-- Database: `w1aw2`
 --
 
 -- --------------------------------------------------------
@@ -27,13 +27,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `band` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `band` varchar(20) NOT NULL,
   `AM` tinyint(1) NOT NULL DEFAULT '0',
   `FM` tinyint(1) NOT NULL DEFAULT '0',
   `no_phone` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `name` (`band`)
+  UNIQUE KEY `name` (`band`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
@@ -65,10 +65,11 @@ INSERT INTO `band` (`id`, `band`, `AM`, `FM`, `no_phone`) VALUES
 
 CREATE TABLE IF NOT EXISTS `band_mode` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `band` int(11) NOT NULL,
-  `mode` int(11) NOT NULL,
+  `band` int(11) unsigned NOT NULL,
+  `mode` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `band` (`band`,`mode`)
+  KEY `band` (`band`),
+  KEY `mode` (`mode`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=69 ;
 
 --
@@ -82,7 +83,6 @@ INSERT INTO `band_mode` (`id`, `band`, `mode`) VALUES
 (4, 1, 7),
 (5, 2, 1),
 (6, 2, 3),
-(61, 2, 4),
 (7, 2, 6),
 (8, 2, 7),
 (9, 3, 1),
@@ -110,39 +110,40 @@ INSERT INTO `band_mode` (`id`, `band`, `mode`) VALUES
 (32, 8, 7),
 (33, 9, 1),
 (34, 9, 3),
-(62, 9, 5),
 (35, 9, 6),
 (36, 9, 7),
 (37, 10, 1),
 (38, 10, 3),
-(63, 10, 5),
 (39, 10, 6),
 (40, 10, 7),
 (41, 11, 1),
 (42, 11, 3),
-(64, 11, 5),
 (43, 11, 6),
 (44, 11, 7),
 (45, 12, 1),
 (46, 12, 3),
-(65, 12, 5),
 (47, 12, 6),
 (48, 12, 7),
 (49, 13, 1),
 (50, 13, 3),
-(66, 13, 5),
 (51, 13, 6),
 (52, 13, 7),
 (53, 14, 1),
 (54, 14, 3),
-(67, 14, 5),
 (55, 14, 6),
 (56, 14, 7),
 (57, 15, 1),
 (58, 15, 3),
-(68, 15, 5),
 (59, 15, 6),
-(60, 15, 7);
+(60, 15, 7),
+(61, 2, 4),
+(62, 9, 5),
+(63, 10, 5),
+(64, 11, 5),
+(65, 12, 5),
+(66, 13, 5),
+(67, 14, 5),
+(68, 15, 5);
 
 -- --------------------------------------------------------
 
@@ -151,10 +152,11 @@ INSERT INTO `band_mode` (`id`, `band`, `mode`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mode` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `mode` varchar(10) NOT NULL,
   `sub_mode` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`mode`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
@@ -177,7 +179,7 @@ INSERT INTO `mode` (`id`, `mode`, `sub_mode`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `op` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `callsign` varchar(10) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -186,12 +188,11 @@ CREATE TABLE IF NOT EXISTS `op` (
   `privilege` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '0:read-only, 1:normal, 2:admin',
   PRIMARY KEY (`id`),
   UNIQUE KEY `call` (`callsign`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `op`
 --
-
 INSERT INTO `op` (`id`, `callsign`, `name`, `email`, `phone`, `password`, `privilege`) VALUES
 (0, '', 'None', 'None', '', '', 0),
 (2, 'N2IW', 'James Ying', 'n2iw@arrl.net', '585-555-5555', '$1$3NkieKGY$9mcOX1rlliVSB.cpkvth01', 2);
@@ -203,16 +204,35 @@ INSERT INTO `op` (`id`, `callsign`, `name`, `email`, `phone`, `password`, `privi
 --
 
 CREATE TABLE IF NOT EXISTS `slot` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `startTime` int(4) unsigned zerofill NOT NULL,
-  `band` int(11) NOT NULL,
-  `mode` varchar(10) NOT NULL,
-  `op` int(11) NOT NULL,
+  `band` int(11) unsigned NOT NULL,
+  `mode` int(11) unsigned NOT NULL,
+  `op` int(11) unsigned NOT NULL,
   `endTime` int(4) unsigned zerofill NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `date` (`date`,`startTime`,`band`,`mode`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  UNIQUE KEY `date` (`date`,`startTime`,`band`,`mode`),
+  KEY `op` (`op`),
+  KEY `band` (`band`),
+  KEY `mode` (`mode`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5629 ;
+
+
+--
+-- Constraints for table `band_mode`
+--
+ALTER TABLE `band_mode`
+  ADD CONSTRAINT `mode_id` FOREIGN KEY (`mode`) REFERENCES `mode` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `band_id` FOREIGN KEY (`band`) REFERENCES `band` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `slot`
+--
+ALTER TABLE `slot`
+  ADD CONSTRAINT `slot_mode_id` FOREIGN KEY (`mode`) REFERENCES `mode` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `op_id` FOREIGN KEY (`op`) REFERENCES `op` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `slot_band_id` FOREIGN KEY (`band`) REFERENCES `band` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
