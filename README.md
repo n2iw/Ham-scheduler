@@ -2,9 +2,11 @@
 
 ##Overview
 
-[RDXA W1AW/2 Schedule Web Application](http://rdxa.com/w1aw-schedule) is designed for our club RDXA for its W1AW/2 New York operating on May, 2014. Since it had been launched, I've got several emails from other clubs, indicating their interests in using my application. So I modified the application to fit the needs of all the other clubs/states.
+[RDXA W1AW/2 Schedule Web Application](http://rdxa.com/w1aw-schedule) is designed for our club RDXA for its W1AW/2 New York operating on May, 2014. Since it had been launched, I've got many emails from other clubs, indicating their interests in using my application. So I modified the application to fit the needs of all the other clubs/states. There are more than 20 clubs/states using this web application at this moment.
 
 This application is FREE for amateur radio society, here is a [test site](w1aw-test), you can register and play. Be aware: all fields are required, but you can enter anything except password, you have to enter at least 6 characters or numbers for it, and it can't be the same as you call sign. All registered user have normal privilege, if you want to see what an Administrator can do, drop me a line, I'll give you an Administrator privilege to play with. [Contact me](contact.php) if you are interested.
+
+Now source code can be download from [GitHub](https://github.com/n2iw/W1AW-portable-scheduler)!
 
 ##Some of the Clubs using this application
 
