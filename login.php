@@ -22,7 +22,8 @@
         }
 
         // query database for user
-        $rows = query("SELECT * FROM op WHERE `callsign` = ?", $_POST["call"]);
+        $getOP = sprintf("SELECT * FROM %s WHERE `%s` = ?", OP_TABLE, OP_CALL);
+        $rows = query($getOP, $_POST["call"]);
 
         // if we found user, check password
         if (count($rows) == 1)
@@ -31,12 +32,12 @@
             $row = $rows[0];
 
             // compare hash of user's input against hash that's in database
-            if (crypt($_POST["password"], $row["password"]) == $row["password"])
+            if (crypt($_POST["password"], $row[OP_PASSWORD]) == $row[OP_PASSWORD])
             {
                 // remember that user's now logged in by storing user's ID in session
-                $_SESSION["id"] = $row["id"];
-                $_SESSION["call"] = $row["callsign"];
-                $_SESSION["privilege"] = $row["privilege"];
+                $_SESSION["id"] = $row[OP_ID];
+                $_SESSION["call"] = $row[OP_CALL];
+                $_SESSION["privilege"] = $row[OP_PRIVILEGE];
 
                 // redirect to home
                 redirect("index.php");

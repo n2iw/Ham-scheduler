@@ -3,7 +3,6 @@
     if ($_SESSION["privilege"] < 2) {
         apologize("Only Administrators can use this page!");
     }
-
     //apologize("Only Administrator can use this function!");
 
     date_default_timezone_set('UTC');
@@ -31,7 +30,7 @@
     //Now insert all the slots
 
     //Clear slot table first
-    $result = query("TRUNCATE slot");
+    $result = query("TRUNCATE ". SLOT_TABLE);
     if ($result === false) {
         apologize("Clear table slot failed!");
     }
@@ -41,14 +40,16 @@
         $length = 200;
     }
 
-    $result = query("SELECT * FROM band_mode");
+    $result = query("SELECT * FROM " . BAND_MODE_TABLE);
 
     foreach ($dates as $d)
         for ($t = 0; $t <= 2400 - $length; $t += $length) {
             $endTime = $t + $length;
+            $insertSlot = sprintf("INSERT IGNORE INTO %s ", SLOT_TABLE) . 
+                sprintf("(%s,%s,%s,%s,%s) ", SLOT_DATE, SLOT_START_TIME, SLOT_BAND_ID, SLOT_MODE_ID, SLOT_END_TIME) .
+                "VALUES (?,?,?,?,?)";
             foreach ($result as $r)
-                query("INSERT IGNORE INTO slot (date,startTime,band,mode,endTime) VALUES (?,?,?,?,?)",
-                   $d, $t, $r["band"], $r["mode"], $endTime);
+                query($insertSlot, $d, $t, $r[BM_BAND_ID], $r[BM_MODE_ID], $endTime);
         }
 
     succeed(array("message"=>"Time Slots generated!", "url"=>"index.php", 

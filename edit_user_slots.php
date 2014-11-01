@@ -10,23 +10,34 @@
     if (isset($_GET["call"])) {
         $call = strtoupper(htmlspecialchars(trim($_GET["call"])));
 
-        $result = query("SELECT * FROM op WHERE `callsign`=?", $call);
+        $getOP = sprintf("SELECT * FROM %s WHERE `%s`=?", OP_TABLE, OP_CALL);
+        $result = query($getOP, $call);
         if ($result === false || count($result) === 0) {
             apologize("Can't find info for " . $call);
         } else { 
-            $id = $result[0]["id"];
+            $id = $result[0][OP_ID];
         }
 
-        $rows = query("SELECT slot.id as id, slot.date as date, slot.startTime as time, 
-            band.band as band, mode.mode as mode 
-            FROM slot,band,mode 
-            WHERE slot.band=band.id AND slot.mode=mode.id AND op=?
-            ORDER BY slot.date, slot.startTime, slot.band, slot.mode", $id);
+        $getSlots = sprintf("SELECT %s.%s as id, ", SLOT_TABLE, SLOT_ID) .
+            sprintf("%s.%s as date, ", SLOT_TABLE, SLOT_DATE) .
+            sprintf("%s.%s as startTime, ", SLOT_TABLE, SLOT_START_TIME) .
+            sprintf("%s.%s as endTime, ", SLOT_TABLE, SLOT_END_TIME) .
+            sprintf("%s.%s as band, ", BAND_TABLE, BAND_NAME) .
+            sprintf("%s.%s as mode ", MODE_TABLE, MODE_NAME) .
+            sprintf("FROM %s, %s, %s ", SLOT_TABLE, BAND_TABLE, MODE_TABLE) .
+            sprintf("WHERE %s.%s=%s.%s ", SLOT_TABLE, SLOT_BAND_ID, BAND_TABLE, BAND_ID) .
+            sprintf("AND %s.%s=%s.%s ", SLOT_TABLE, SLOT_MODE_ID, MODE_TABLE, MODE_ID) .
+            sprintf("AND %s=? ", SLOT_OP_ID) .
+            sprintf("ORDER BY %s.%s, ", SLOT_TABLE, SLOT_DATE) .
+            sprintf("%s.%s, ", SLOT_TABLE, SLOT_START_TIME) .
+            sprintf("%s.%s, ", SLOT_TABLE, SLOT_BAND_ID) .
+            sprintf("%s.%s", SLOT_TABLE, SLOT_MODE_ID);
+        $rows = query($getSlots, $id);
         if ($rows === false) {
             apologize("Something wrong with finding slots for " . $call);
         } else {
             foreach ($rows as $r) {
-                $slots[] = array("id"=>$r["id"] , "date"=>$r["date"], "time"=>$r["time"], 
+                $slots[] = array("id"=>$r["id"] , "date"=>$r["date"], "time"=>array($r["startTime"],$r["endTime"]), 
                     "band"=>$r["band"], "mode"=>$r["mode"]); 
             }
             if (!isset($slots)) {

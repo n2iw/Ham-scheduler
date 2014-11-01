@@ -6,11 +6,13 @@
         $privilege = $_SESSION["privilege"];
         //dump($_POST);
         if ($privilege > 1){ //if you are admin op you can cancel other's slot
-            $result = query("UPDATE slot SET op=? WHERE id=? AND (op=0 OR ?=0)", 
-                $_POST["op"],$_POST["id"],$_POST["op"]);
-        } else { //normal op can only take free slot and cancel your own slot
-            $result = query("UPDATE slot SET op=? WHERE id=? AND (op=0 OR op=?)", 
-                $_POST["op"],$_POST["id"],$_SESSION["id"]);
+            $updateSlot = sprintf("UPDATE %s SET %s=? ", SLOT_TABLE, SLOT_OP_ID) .
+                sprintf("WHERE %s=? AND (%s=0 OR ?=0)", SLOT_ID, SLOT_OP_ID);
+            $result = query($updateSlot, $_POST["op"],$_POST["id"],$_POST["op"]);
+        } else { //normal op can only take free slot or cancel your own slot
+            $updateSlot = sprintf("UPDATE %s SET %s=? ", SLOT_TABLE, SLOT_OP_ID) .
+                sprintf("WHERE %s=? AND (%s=0 OR %s=?)", SLOT_ID, SLOT_OP_ID, SLOT_OP_ID);
+            $result = query($updateSlot, $_POST["op"],$_POST["id"],$_SESSION["id"]);
         }
         if ($result === false) {
             apologize("Failed to take/cancel slot! Please try again later.");

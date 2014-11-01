@@ -35,27 +35,27 @@
         $edit = "";
         if ($_POST["call"] != $_POST["old_call"])
         {
-            $edit .= "`callsign`=\"" . strtoupper($_POST["call"]) ."\", ";
+            $edit .= "`" . OP_CALL . "`=\"" . strtoupper($_POST["call"]) ."\", ";
         }
         if ($_POST["name"] != $_POST["old_name"])
         {
-            $edit .= "`name`=\"" . $_POST["name"] ."\", ";
+            $edit .= "`" . OP_NAME . "`=\"" . $_POST["name"] ."\", ";
         }
         if ($_POST["email"] != $_POST["old_email"])
         {
-            $edit .= "`email`=\"" . $_POST["email"] ."\", ";
+            $edit .= "`" . OP_EMAIL . "`=\"" . $_POST["email"] ."\", ";
         }
         if ($_POST["phone"] != $_POST["old_phone"])
         {
-            $edit .= "`phone`=\"" . $_POST["phone"] ."\", ";
+            $edit .= "`" . OP_PHONE . "`=\"" . $_POST["phone"] ."\", ";
         }
         if (!empty($_POST["new_password"]))
         {
-            $edit .= "`password`=\"" . crypt($_POST["new_password"]) ."\", ";
+            $edit .= "`" .  OP_PASSWORD . "`=\"" . crypt($_POST["new_password"]) ."\", ";
         }
         if ($_POST["privilege"] != $_POST["old_privilege"])
         {
-            $edit .= "`privilege`=\"" . $_POST["privilege"] ."\", ";
+            $edit .= "`" . OP_PRIVILEGE . "`=\"" . $_POST["privilege"] ."\", ";
         }
 
         if ($edit === "")
@@ -67,8 +67,8 @@
             $edit = substr($edit, 0, -2); //delete trailing ", "
         }
         
-        if (query("UPDATE op SET $edit WHERE id=?",
-            $_POST["id"])  === false)
+        $updateOP = sprintf("UPDATE %s SET $edit WHERE %s=?", OP_TABLE, OP_ID);
+        if (query($updateOP, $_POST["id"])  === false)
         {
             apologize("Sorry, edit user failed!");
         }
@@ -83,17 +83,18 @@
 
         if (isset($_GET["call"])) {
             $call = strtoupper(htmlspecialchars(trim($_GET["call"])));
-            $result = query("SELECT * FROM op WHERE `callsign`=?", $call);
+            $getOP = sprintf("SELECT * FROM %s WHERE `%s`=?", OP_TABLE, OP_CALL);
+            $result = query($getOP, $call);
             if ($result === false || count($result) === 0) {
                 apologize("Can't find profile for " . $call);
             } else {
                 render("edit_user_form.php", array("title" => "Edit profile - " . $_SESSION["call"],
-                    "id" => $result[0]["id"],
+                    "id" => $result[0][OP_ID],
                     "call" => $call,
-                    "name" => $result[0]["name"],
-                    "email" => $result[0]["email"],
-                    "privilege" => $result[0]["privilege"],
-                    "phone" => $result[0]["phone"]
+                    "name" => $result[0][OP_NAME],
+                    "email" => $result[0][OP_EMAIL],
+                    "privilege" => $result[0][OP_PRIVILEGE],
+                    "phone" => $result[0][OP_PHONE]
                 )); 
             }
         } else {

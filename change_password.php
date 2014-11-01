@@ -24,15 +24,16 @@
                can't be the same as Call sign!"); 
         }
 
-        $result = query("SELECT password FROM op WHERE id=?", $_SESSION["id"]);
+        $getPassword = sprintf( "SELECT %s FROM %s WHERE %s=?", OP_PASSWORD, OP_TABLE, OP_ID);
+        $result = query($getPassword, $_SESSION["id"]);
 
-        if (crypt($_POST["password"], $result[0]["password"]) != $result[0]["password"])
+        if (crypt($_POST["password"], $result[0][OP_PASSWORD]) != $result[0][OP_PASSWORD])
         {
             apologize("You entered a wrong password!");
         }
         
-        if (query("UPDATE op SET password=? WHERE id=?",
-            crypt($_POST["new_password"]), $_SESSION["id"])  === false)
+        $updateOP = sprintf("UPDATE %s SET %s=? WHERE %s=?", OP_TABLE, OP_PASSWORD, OP_ID);
+        if (query($updateOP, crypt($_POST["new_password"]), $_SESSION["id"])  === false)
         {
             apologize("Sorry, change failed!");
         }
