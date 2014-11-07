@@ -4,6 +4,5 @@ includes/constants2.php
 includes/constants.php
 includes/database1.php
 includes/database2.php
-switchdb.py
 fully-install.php
 !.gitignore
