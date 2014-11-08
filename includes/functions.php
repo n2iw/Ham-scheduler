@@ -106,6 +106,70 @@
             "price" => $data[2],
         );
     }
+    /**
+     * 
+     *
+     */
+
+    function checkDatabase($database)
+    {
+        // try to connect to database
+        static $handle;
+        if (!isset($handle))
+        {
+            try
+            {
+                // connect to database
+                $handle = new PDO("mysql:dbname=INFORMATION_SCHEMA" . ";host=" . SERVER, USERNAME, PASSWORD);
+
+                // ensure that PDO::prepare returns false when passed invalid SQL
+                $handle->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); 
+            }
+            catch (Exception $e)
+            {
+                // trigger (big, orange) error
+                trigger_error($e->getMessage(), E_USER_ERROR);
+                exit;
+            }
+        }
+        $sql = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA 
+            WHERE SCHEMA_NAME = ?";
+
+        $statement = $handle->prepare($sql);
+        if ($statement === false)
+        {
+            $err_info = $handle->errorInfo();
+            // trigger (big, orange) error
+            trigger_error($err_info[2], E_USER_ERROR);
+            exit;
+        }
+
+        // execute SQL statement
+        $results = $statement->execute(array($database));
+
+        // return result set's rows, if any
+        if ($results !== false)
+        {
+            $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+            if (count($rows) == 0) {
+                apologize("Database doesn't exit, load initial.sql file first!");
+            }
+        }
+        else
+        {
+            apologize("Check Database failed!");
+        }
+    }
+
+    function checkTable($database, $table) {
+        $sql = "SELECT COUNT(*) as count FROM information_schema.tables 
+            WHERE table_schema = ? AND table_name = ?";
+        $result = query($sql, DATABASE, OP_TABLE);
+        if ($result[0]["count"] == 0) {
+            apologize("Table '" . OP_TABLE . "' doesn't exit, load initial.sql file first!");
+            
+        } 
+    }
 
     /**
      * Executes SQL statement, possibly with parameters, returning

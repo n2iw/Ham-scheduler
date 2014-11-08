@@ -2,7 +2,18 @@
     // configuration
     require("includes/config.php");
 
-    
+    checkTable(DATABASE, OP_TABLE);
+    checkTable(DATABASE, SLOT_TABLE);
+    checkTable(DATABASE, BAND_TABLE);
+    checkTable(DATABASE, MODE_TABLE);
+    checkTable(DATABASE, BAND_MODE_TABLE);
+
+    $checkSlotTable = "SELECT COUNT(*) AS count FROM " . SLOT_TABLE;
+    $result = query($checkSlotTable);
+    if ($result[0]['count'] == 0){
+        apologize("Table " . SLOT_TABLE . " is empty!\nRun install.php again!");
+    }
+     
     if (isset($_GET["date"]))
     {
         $date = $_GET["date"];
@@ -17,6 +28,7 @@
         $getDates = sprintf("SELECT DISTINCT %s as date ", SLOT_DATE) .
             sprintf("FROM `%s` ORDER BY date", SLOT_TABLE);
         $result = query($getDates);
+
         foreach ($result as $r){
             $cmp = strcmp($today, $r["date"]); 
             if ($cmp < 0) {

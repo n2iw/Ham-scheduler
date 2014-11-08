@@ -10,44 +10,44 @@
      **********************************************************************/
 
     // table names
-    define("OP_TABLE", "op");
-    define("BAND_TABLE", "band");
-    define("MODE_TABLE", "mode");
-    define("BAND_MODE_TABLE", "band_mode");
-    define("SLOT_TABLE", "slot");
+    define("OP_TABLE", "op_new");
+    define("BAND_TABLE", "band_new");
+    define("MODE_TABLE", "mode_new");
+    define("BAND_MODE_TABLE", "band_mode_new");
+    define("SLOT_TABLE", "slot_new");
 
     //column names in band table
-    define("BAND_ID", "id");
-    define("BAND_NAME", "band");
-    define("BAND_HAS_AM", "AM");
-    define("BAND_HAS_FM", "FM");
-    define("BAND_HAS_NO_PHONE", "no_phone");
+    define("BAND_ID", "band_id");
+    define("BAND_NAME", "name");
+    define("BAND_HAS_AM", "has_AM");
+    define("BAND_HAS_FM", "has_FM");
+    define("BAND_HAS_NO_PHONE", "has_no_phone");
 
     //column names in band_mode table
-    define("BM_ID", "id");
-    define("BM_BAND_ID", "band");
-    define("BM_MODE_ID", "mode");
+    define("BM_ID", "band_mode_id");
+    define("BM_BAND_ID", "band_id");
+    define("BM_MODE_ID", "mode_id");
 
     //column names in mode table
-    define("MODE_ID", "id");
-    define("MODE_NAME", "mode");
-    define("MODE_IS_SUBMODE", "sub_mode");
+    define("MODE_ID", "mode_id");
+    define("MODE_NAME", "name");
+    define("MODE_IS_SUBMODE", "is_sub_mode");
 
     //column names in op table
-    define("OP_ID", "id");
-    define("OP_CALL", "callsign");
-    define("OP_NAME", "name");
-    define("OP_EMAIL", "email");
-    define("OP_PHONE", "phone");
-    define("OP_PASSWORD", "password");
-    define("OP_PRIVILEGE", "privilege");
+    define("OP_ID", "op_id");
+    define("OP_CALL", "call");
+    define("OP_NAME", "op_name");
+    define("OP_EMAIL", "op_email");
+    define("OP_PHONE", "op_phone");
+    define("OP_PASSWORD", "op_password");
+    define("OP_PRIVILEGE", "op_privilege");
 
     //column names in slot table
-    define("SLOT_ID", "id");
-    define("SLOT_DATE", "date");
-    define("SLOT_START_TIME", "startTime");
-    define("SLOT_BAND_ID", "band");
-    define("SLOT_MODE_ID", "mode");
-    define("SLOT_OP_ID", "op");
-    define("SLOT_END_TIME", "endTime");
+    define("SLOT_ID", "slot_id");
+    define("SLOT_DATE", "slot_date");
+    define("SLOT_START_TIME", "slot_startTime");
+    define("SLOT_BAND_ID", "band_id");
+    define("SLOT_MODE_ID", "mode_id");
+    define("SLOT_OP_ID", "op_id");
+    define("SLOT_END_TIME", "slot_endTime");
 ?>

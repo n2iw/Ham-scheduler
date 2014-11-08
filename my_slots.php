@@ -1,6 +1,8 @@
 <?php
     require("includes/config.php");
 
+    checkTable(DATABASE, SLOT_TABLE);
+
     $getSlots = sprintf("SELECT %s.%s as id, ", SLOT_TABLE, SLOT_ID) .
         sprintf("%s.%s as date, ", SLOT_TABLE, SLOT_DATE) .
         sprintf("%s.%s as startTime, ", SLOT_TABLE, SLOT_START_TIME) .

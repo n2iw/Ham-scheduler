@@ -3,6 +3,8 @@
     // configuration
     require("includes/config.php"); 
 
+    checkTable(DATABASE, OP_TABLE);
+
     // if form was submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {

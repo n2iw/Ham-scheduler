@@ -17,6 +17,8 @@
     require("functions.php");
     //date_default_timezone_set('UTC');
 
+    checkDatabase(DATABASE);
+
     // enable sessions
     session_start();
 

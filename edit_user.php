@@ -7,6 +7,8 @@
         apologize("Only Administrators can use this page!");
     }
 
+    checkTable(DATABASE, OP_TABLE);
+
     // if form was submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {

@@ -1,5 +1,8 @@
 <?php
     require("includes/config.php");
+
+    checkTable(DATABASE, SLOT_TABLE);
+
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {    
         $op_id = $_SESSION["id"];

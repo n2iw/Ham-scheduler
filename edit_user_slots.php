@@ -2,6 +2,9 @@
     // configuration
     require("includes/config.php");
 
+    checkTable(DATABASE, OP_TABLE);
+    checkTable(DATABASE, SLOT_TABLE);
+
     //Only admins can use this page
     if ($_SESSION["privilege"] < 2) {
         apologize("Only Administrators can use this page!");

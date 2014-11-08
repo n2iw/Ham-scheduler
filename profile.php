@@ -1,6 +1,8 @@
 <?php
     // configuration
     require("includes/config.php");
+    checkTable(DATABASE, OP_TABLE);
+
     // if form was submitted
     $getOP = sprintf("SELECT * FROM %s WHERE %s=?", OP_TABLE, OP_ID);
     $result = query($getOP, $_SESSION["id"]);

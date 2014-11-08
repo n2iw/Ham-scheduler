@@ -4,6 +4,10 @@
         apologize("Only Administrators can use this page!");
     }
     //apologize("Only Administrator can use this function!");
+    
+    checkTable(DATABASE, SLOT_TABLE);
+    checkTable(DATABASE, BAND_MODE_TABLE);
+    
 
     date_default_timezone_set('UTC');
     $first_date = DateTime::createFromFormat(
