@@ -20,6 +20,7 @@
     login with user: N2IW password: MingJamesYing
 7) In your browser, goto your schedule application's  install.php 
     such as "n2iw.com/w1aw-test/install.php", you should see a success message
+    you may have to wait a couple of minutes before you will see the message!
 8) Delete install.php install.txt and initial.sql from server
 9) Add users  in Management/Add user page
 10) Give at least one user Administrator privilege by Edit user in Management/Edit user page, 
