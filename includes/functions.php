@@ -108,10 +108,12 @@
     }
     /**
      * 
-     *
+     * Check if DATABASE exists, if not, prompt user to create database first
+     * Will be called in config.php
+     * 
      */
 
-    function checkDatabase($database)
+    function checkDatabase()
     {
         // try to connect to database
         static $handle;
@@ -145,14 +147,14 @@
         }
 
         // execute SQL statement
-        $results = $statement->execute(array($database));
+        $results = $statement->execute(array(DATABASE));
 
         // return result set's rows, if any
         if ($results !== false)
         {
             $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
             if (count($rows) == 0) {
-                apologize("Database doesn't exit, load initial.sql file first!");
+                apologize("Database doesn't exit, make sure you enter the correct database name in constants.php first!");
             }
         }
         else
@@ -161,14 +163,18 @@
         }
     }
 
-    function checkTable($database, $table) {
-        $sql = "SELECT COUNT(*) as count FROM information_schema.tables 
-            WHERE table_schema = ? AND table_name = ?";
-        $result = query($sql, DATABASE, OP_TABLE);
-        if ($result[0]["count"] == 0) {
-            apologize("Table '" . OP_TABLE . "' doesn't exit, load initial.sql file first!");
-            
-        } 
+    /**
+     *
+     * Check to see if $table exists, if not, prompt user to load initial.sql
+     *
+     */
+    function checkTable($table) {
+      $sql = "SELECT COUNT(*) as count FROM information_schema.tables 
+          WHERE table_schema = ? AND table_name = ?";
+      $result = query($sql, DATABASE, $table);
+      if ($result[0]["count"] == 0) {
+          apologize("Table '" . $table . "' doesn't exit, load initial.sql file first!");
+      } 
     }
 
     /**
@@ -297,5 +303,28 @@
         query("INSERT INTO history (user,datetime,symbol,type,price,shares)
             VALUES (?,?,?,?,?,?)", $_SESSION["id"], $datetime, $symbol,
              $type, $price, $shares);
+    }
+
+    /**
+     *
+     * check if user has login, if not, redirect to login page
+     *
+     */
+    function makeSureLogin() {
+      if ($_SESSION["database"] != DATABASE) {
+        logout();
+        redirect("login.php");
+      }
+    }
+
+    /**
+     *
+     * check if  user is an Admin user, if not, apologize
+     */
+    function makeSureIsAdmin() {
+      makeSureLogin();
+      if ($_SESSION["privilege"] < 2) {
+        apologize("Only Administrators can use this page!");
+      }
     }
 ?>

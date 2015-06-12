@@ -2,11 +2,11 @@
     // configuration
     require("includes/config.php");
 
-    checkTable(DATABASE, OP_TABLE);
-    checkTable(DATABASE, SLOT_TABLE);
-    checkTable(DATABASE, BAND_TABLE);
-    checkTable(DATABASE, MODE_TABLE);
-    checkTable(DATABASE, BAND_MODE_TABLE);
+    checkTable(OP_TABLE);
+    checkTable(SLOT_TABLE);
+    checkTable(BAND_TABLE);
+    checkTable(MODE_TABLE);
+    checkTable(BAND_MODE_TABLE);
 
     $checkSlotTable = "SELECT COUNT(*) AS count FROM " . SLOT_TABLE;
     $result = query($checkSlotTable);

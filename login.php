@@ -3,7 +3,7 @@
     // configuration
     require("includes/config.php"); 
 
-    checkTable(DATABASE, OP_TABLE);
+    checkTable(OP_TABLE);
 
     // if form was submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -37,6 +37,7 @@
             if (crypt($_POST["password"], $row[OP_PASSWORD]) == $row[OP_PASSWORD])
             {
                 // remember that user's now logged in by storing user's ID in session
+                $_SESSION["database"] = DATABASE;
                 $_SESSION["id"] = $row[OP_ID];
                 $_SESSION["call"] = $row[OP_CALL];
                 $_SESSION["privilege"] = $row[OP_PRIVILEGE];

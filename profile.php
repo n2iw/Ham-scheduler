@@ -1,7 +1,9 @@
 <?php
     // configuration
     require("includes/config.php");
-    checkTable(DATABASE, OP_TABLE);
+    checkTable(OP_TABLE);
+
+    makeSureLogin();
 
     // if form was submitted
     $getOP = sprintf("SELECT * FROM %s WHERE %s=?", OP_TABLE, OP_ID);

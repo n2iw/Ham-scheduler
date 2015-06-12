@@ -1,13 +1,13 @@
 <?php 
     require("includes/config.php");
-    if ($_SESSION["privilege"] < 2) {
-        apologize("Only Administrators can use this page!");
-    }
+
+    checkTable(SLOT_TABLE);
+    checkTable(BAND_MODE_TABLE);
+
+    //Only admins can use this page
+    makeSureIsAdmin();
+
     //apologize("Only Administrator can use this function!");
-    
-    checkTable(DATABASE, SLOT_TABLE);
-    checkTable(DATABASE, BAND_MODE_TABLE);
-    
 
     date_default_timezone_set('UTC');
     $first_date = DateTime::createFromFormat(

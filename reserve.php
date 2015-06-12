@@ -1,7 +1,9 @@
 <?php
     require("includes/config.php");
 
-    checkTable(DATABASE, SLOT_TABLE);
+    checkTable(SLOT_TABLE);
+
+    makeSureLogin();
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {    

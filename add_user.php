@@ -2,12 +2,10 @@
     // configuration
     require("includes/config.php");
 
-    //Normal user will can't use this page
-    if ($_SESSION["privilege"] < 2) {
-        apologize("Only Administrators can use this page!");
-    }
+    checkTable(OP_TABLE);
 
-    checkTable(DATABASE, OP_TABLE);
+    //Normal user will can't use this page
+    makeSureIsAdmin();
     
     // if form was submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST")

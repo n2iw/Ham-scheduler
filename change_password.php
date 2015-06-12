@@ -2,7 +2,10 @@
     // configuration
     require("includes/config.php");
 
-    checkTable(DATABASE, OP_TABLE);
+    checkTable(OP_TABLE);
+
+    //make sure user has login
+    makeSureLogin();    
 
     // if form was submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST")
