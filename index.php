@@ -102,9 +102,11 @@
 
     $getTimes = sprintf("SELECT DISTINCT %s as startTime, ", SLOT_START_TIME) .
         sprintf("%s as endTime ", SLOT_END_TIME) .
-        sprintf("FROM `%s` ORDER BY startTime", SLOT_TABLE);
+        sprintf("FROM `%s` ", SLOT_TABLE) .
+        sprintf("WHERE `%s` = ? ", SLOT_DATE) .
+        sprintf("ORDER BY startTime");
 
-    $result = query($getTimes);
+    $result = query($getTimes, $date);
     foreach ($result as $r){
         $times[] = array($r["startTime"], $r["endTime"]);
     }
