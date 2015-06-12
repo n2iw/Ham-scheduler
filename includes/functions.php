@@ -44,6 +44,7 @@
      */
     function logout()
     {
+      if ( isLogin() ) {
         // unset any session variables
         $_SESSION = array();
 
@@ -55,6 +56,7 @@
 
         // destroy session
         session_destroy();
+      }
     }
 
     /**
@@ -305,15 +307,31 @@
              $type, $price, $shares);
     }
 
+    function isLogin() {
+      if (isset($_SESSION["database"]) && $_SESSION["database"] == DATABASE) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     /**
      *
      * check if user has login, if not, redirect to login page
      *
      */
     function makeSureLogin() {
-      if ($_SESSION["database"] != DATABASE) {
+      if ( !isLogin() ) {
         logout();
         redirect("login.php");
+      }
+    }
+
+    function isAdmin() {
+      if ( isLogin() && $_SESSION["privilege"] > 1) {
+        return true;
+      } else {
+        return false;
       }
     }
 
@@ -322,8 +340,7 @@
      * check if  user is an Admin user, if not, apologize
      */
     function makeSureIsAdmin() {
-      makeSureLogin();
-      if ($_SESSION["privilege"] < 2) {
+      if ( !isAdmin() ) {
         apologize("Only Administrators can use this page!");
       }
     }

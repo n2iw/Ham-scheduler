@@ -24,7 +24,7 @@
 
 <table id="slots_table">
     <?php 
-        if (isset($_SESSION["id"])) {
+        if ( isLogin() ) {
             $op_id = $_SESSION["id"];
             $privilege = $_SESSION["privilege"];
         } else {

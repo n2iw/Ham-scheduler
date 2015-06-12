@@ -23,13 +23,13 @@
                     <table>
                         <tr>
                             <td><a href="index.php">Home</a></td>
-                            <?php if (!isset($_SESSION["id"])): ?>
+                            <?php if ( !isLogin() ): ?>
                                 <td><a href="login.php">Login</a></td>
                             <?php else :?>
                                 <td><a href="my_slots.php">My Slots</a></td>
                                 <td><a href="profile.php">Profile</a></td>
                                 <td><a href="logout.php">Logout</a></td>
-                                <?php if ($_SESSION["privilege"] > 1): ?>
+                                <?php if (isAdmin()): ?>
                                     <td><a href="management.php">Management</a></td>
                                 <?php endif ?>
                             <?php endif ?>
