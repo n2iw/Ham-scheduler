@@ -19,11 +19,8 @@
     // ***** your database's password
     define("PASSWORD", "w1aw");
 
-    // ***** your club's name
-    define("CLUB", "RDXA");
-    
-    // ***** your operating callsign
-    define("CALL_SIGN", "W1AW/2");
+    // title for the operation
+    define("TITLE", "2014 RDXA W1AW/2 Schedule");
     
     // how long a time slot should be (in whole hours and 24 can be divided by it)
     define("TIME_SLOT_LENGTH", 2);

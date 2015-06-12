@@ -1,5 +1,5 @@
 <div class="table">
-<h1>2014 <?= CLUB . " " . CALL_SIGN?> Schedule</h1>
+<h1><?= TITLE ?></h1>
 
 <div id="date_nav" class="navigator">
 <table>
