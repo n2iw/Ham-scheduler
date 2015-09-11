@@ -41,7 +41,14 @@
 
     //Timezone can be found on following website
     //https://php.net/manual/en/timezones.america.php
-    //define("TIMEZONE", "America/Los_Angeles");
+    // Eastern ........... America/New_York
+    // Central ........... America/Chicago
+    // Mountain .......... America/Denver
+    // Mountain no DST ... America/Phoenix
+    // Pacific ........... America/Los_Angeles
+    // Alaska ............ America/Anchorage
+    // Hawaii ............ America/Adak
+    // Hawaii no DST ..... Pacific/Honolulu
     // ***** 
     define("TIMEZONE", "America/New_York");
 ?>
