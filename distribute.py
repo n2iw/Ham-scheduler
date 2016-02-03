@@ -41,7 +41,8 @@ os.system("rm -f ./%s/switchdb.py" % tempFolder);
 os.system("rm -f ./%s/distribute.py" % tempFolder);
 
 print "Compressing to %s.tar.gz" % tempFolder 
-os.system("tar cfz %s.tar.gz %s/" % (tempFolder, tempFolder));
+#os.system("tar cfz %s.tar.gz %s/" % (tempFolder, tempFolder));
+os.system("zip -X -r %s.zip %s/*" % (tempFolder, tempFolder));
 
 print "Removing temp files"
 os.system("rm -rf ./%s/" % tempFolder);
