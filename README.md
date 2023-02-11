@@ -1,3 +1,11 @@
+## Replacement
+
+This application has not been maintained for several years and has been retired as of Feb. 2023. A modern website has replaced this application. Please go to [Ham QTV](https://www.ham-qtv.com) and register a user to get started. All registered users can create and manage their own events. A user can also request to operated in any events in the website.
+
+This application may not work with latest version of PHP or MySQL. The author will not be able to provide technical support anymore. If you decide to use it anyway, please make sure you have system admin or developer who can solve technical issues for you.
+
+Following is the old README
+
 # ARRL Centennial QSO Party Schedule Application
 
 ## Overview
@@ -10,29 +18,29 @@ Now source code can be download from [GitHub](https://github.com/n2iw/W1AW-porta
 
 ## Some of the Clubs using this application
 
-- [Radio Amateurs of Northern Vermont](http://www.ranv.org/) ->  [(Vermont, Mar. 26 - Apr. 1](http://www.hamclass.net/w1aw-schedule-old/)[, Aug. 6 - 12)](http://www.hamclass.net/w1aw-schedule)
-- [NR0X](http://nr0x.org/) ->  [(Iowa, Mar. 26 - Apr. 1)](http://nr0x.org/w1aw-schedule)
-- [Puerto Rico Amateur Radio League](http://prarl.org/) ->  [(Puerto Rico, Apr. 9 - 15, Oct. 23 - 29)](http://n2iw.com/prarl)
+- [Radio Amateurs of Northern Vermont](http://www.ranv.org/) -> [(Vermont, Mar. 26 - Apr. 1](http://www.hamclass.net/w1aw-schedule-old/)[, Aug. 6 - 12)](http://www.hamclass.net/w1aw-schedule)
+- [NR0X](http://nr0x.org/) -> [(Iowa, Mar. 26 - Apr. 1)](http://nr0x.org/w1aw-schedule)
+- [Puerto Rico Amateur Radio League](http://prarl.org/) -> [(Puerto Rico, Apr. 9 - 15, Oct. 23 - 29)](http://n2iw.com/prarl)
 - [Rochester DX Association](http://www.rdxa.com/) -> [(New York, May 21 - 27)](http://rdxa.com/w1aw-schedule)
 - [Mid-MO Amateur Radio Club](http://www.mmccs.com/mmarc/) -> [(Missouri May. 28 - June 3, Oct. 8 - Oct. 14)](http://www.w0kah.net/w1aw/)
 - [Alabama Contest Group](http://www.alabamacontestgroup.org) -> [(Alabama June 4 - 10, Oct. 15 - 21)](http://alabamacontestgroup.org/W1AWinAL/)
 - [The Zilla Contest Group](http://w5zn.org/Team%20W5ZN.html) -> [(Arkansas June 11 - 17)](http://w1aw.dxusa.net/ar)
-- [KE7X](http://www.ke7x.com/) ->  [(Montana, June 18 - 24)](http://w1awinmontana.org/scheduler)
+- [KE7X](http://www.ke7x.com/) -> [(Montana, June 18 - 24)](http://w1awinmontana.org/scheduler)
 - [K9CT](http://www.k9ct.us/) -> [(Illinois June 25 - July 1)](http://www.k9ct.us/w1aw/)
-- [Eau Claire Amateur Radio Club](http://ecarc.org/) ->  [(Wisconsin, July, 2 - 8)](http://ecarc.org/w1aw-schedule)
+- [Eau Claire Amateur Radio Club](http://ecarc.org/) -> [(Wisconsin, July, 2 - 8)](http://ecarc.org/w1aw-schedule)
 - [Society of Midwest Contesters](http://www.w9smc.com/) -> [(Indiana July 23 - 30)](http://www.w1srd.com/w1aw-indiana-1)
 - [CTRI Contest Group](https://groups.yahoo.com/neo/groups/ctricg/info) -> [(Rhode Island July 23 - 29, Nov. 12 - 18)](http://w1aw.dxusa.net/ri)
-- [Edmond Amateur Radio Society](http://www.k5eok.org/) ->  [(Oklahoma, Aug. 13 - 19)](http://k5eok.org/w1aw-schedule)
+- [Edmond Amateur Radio Society](http://www.k5eok.org/) -> [(Oklahoma, Aug. 13 - 19)](http://k5eok.org/w1aw-schedule)
 - [W0ND](http://www.w0nd.com/) -> [(North Dakota Aug. 20 - 26)](http://w1aw.dxusa.net/nd)
 - [Mad River Radio Club](http://www.madriverradioclub.org/) -> [(Ohio Aug. 20 - 26)](http://www.madriverradioclub.org/w1aw/)
-- [Long Island DX Society](http://n1li.webs.com/) ->  [(Maine, Aug. 27 - Sept. 2, Dec. 3 - 9)](http://n2iw.com/lidxs)
+- [Long Island DX Society](http://n1li.webs.com/) -> [(Maine, Aug. 27 - Sept. 2, Dec. 3 - 9)](http://n2iw.com/lidxs)
 - [OKC Lunch Bunch](http://www.okclunchbunch.com/) -> [(2014 Route-66 W6K Sept. 6 -14)](http://www.okclunchbunch.com/2014RT66/)
 - [CTRI Contest Group](https://groups.yahoo.com/neo/groups/ctricg/info) -> [(Connecticut Sept. 17 - 23)](http://w1aw.dxusa.net/ct2)
 - [Idaho ARRL Section](http://www.idahoarrl.info/) -> [(Idaho Sept. 24 - 30)](http://www.w1srd.com/w1aw-idaho-2/)
 - [NCCC](http://www.nccc.cc/) -> [(California Oct. 1 - 7)](http://www.w1srd.com/w1aw-schedule/)
 - [NR4M](http://NR4M.com) -> [(Virginia Oct. 8 - 14)](http://nr4m.com/w1aw/)
 - [K8TB/KT8X](http://k8tb.org/) -> [(Michigan Oct. 15 - 21)](http://www.k8sn.org/w1aw-schedule/)
-- [W8HC](http://www.w8hc.com/) ->  [(West Virginia, Oct. 22 - 28)](http://w8tn.com/w1aw-8/)
+- [W8HC](http://www.w8hc.com/) -> [(West Virginia, Oct. 22 - 28)](http://w8tn.com/w1aw-8/)
 - [(Massachusetts Oct. 29 - Nov. 4)](http://w1uj.net/w1aw-schedule)
 - [Louisiana Contest Club](http://n5lcc.com) -> [(Louisiana Nov. 26 - Dec. 2)](http://w5wz.com/w1aw)
 
@@ -45,6 +53,7 @@ This application uses PHP and MySQL, if your web hosting/server supports PHP and
 If your club doesn't have suitable personnel to manage a website, I can host the application for your club, problem is my website is on a shared web hosting, it has limited databases and other resources. So please consider use your club's web hosting if you can.
 
 ## Basic Features
+
 Here is some basic features
 
 ### User Management
